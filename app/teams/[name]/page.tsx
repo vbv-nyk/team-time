@@ -4,7 +4,7 @@ export default function Page({ params }: { params: { name: string } }) {
   const { name } = params;
   return (
     <TeamDetails
-      name={name}
+      name={decodeURIComponent(name)}
       description={"This is the first team ever created on the platform"}
       requirements={[
         "UI/UX Designer",

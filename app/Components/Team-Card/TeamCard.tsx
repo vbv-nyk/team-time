@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface teamData {
   imageUrl: string;
@@ -17,7 +18,9 @@ export default function TeamCard(props: teamData) {
       />
       <h1>{props.name}</h1>
       <p>{props.description}</p>
-      <button className="p-2 border">View Details</button>
+      <Link href={`/teams/${props.name}`}>
+        <button className="p-2 border">View Details</button>
+      </Link>
     </div>
   );
 }

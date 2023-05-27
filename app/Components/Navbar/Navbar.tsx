@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Navbar() {
   return (
     <div className="p-4">
@@ -9,12 +11,14 @@ export default function Navbar() {
           <a href="#" id="about">
             About
           </a>
-          <a href="#" id="teams">
+          <Link href="/teams" id="teams">
             Teams
-          </a>
-          <button className="p-2 font-bold text-white bg-blue-600 border">
-            Create
-          </button>
+          </Link>
+          <Link href={`/teams/create`}>
+            <button className="p-2 font-bold text-white bg-blue-600 border">
+              Create
+            </button>
+          </Link>
         </div>
       </div>
     </div>

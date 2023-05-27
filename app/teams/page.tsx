@@ -24,7 +24,9 @@ export default function Page() {
       <Navbar />
       <div className="p-4">
         <div className="text-2xl font-bold">Teams</div>
-        <div className="grid grid-cols-4 gap-3">{teams}</div>
+        <div className="grid gap-3 grid-cols-[repeat(auto-fit,_minmax(350px,_1fr))]">
+          {teams}
+        </div>
       </div>
     </>
   );

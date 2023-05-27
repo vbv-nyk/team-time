@@ -1,4 +1,5 @@
 "use client";
+import Navbar from "@/app/Components/Navbar/Navbar";
 import { FormEvent } from "react";
 
 export default function Page() {
@@ -8,6 +9,7 @@ export default function Page() {
 
   return (
     <div>
+      <Navbar />
       <form className="flex flex-col items-start gap-2 p-2 w-fit">
         <div>
           <h1>Team Name</h1>
