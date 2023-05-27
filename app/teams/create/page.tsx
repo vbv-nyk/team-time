@@ -25,6 +25,10 @@ export default function Page() {
           />
         </div>
         <div>
+          <h1>Image</h1>
+          <input type="file" id="img" accept="image/*" />
+        </div>
+        <div>
           <h1>Requirements</h1>
           <input className="p-4 border" />
         </div>
