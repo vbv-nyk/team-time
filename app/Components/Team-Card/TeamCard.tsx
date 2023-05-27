@@ -1,14 +1,14 @@
 import Image from "next/image";
 
-interface teamData{
-  imageUrl: string,
-  name: string,
-  description: string,
+interface teamData {
+  imageUrl: string;
+  name: string;
+  description: string;
 }
 
-export default function TeamCard(props:teamData) {
+export default function TeamCard(props: teamData) {
   return (
-    <div className="flex flex-col items-center w-full break-all">
+    <div className="flex flex-col items-center w-full gap-2 break-all">
       <Image
         src={props.imageUrl}
         width={250}
@@ -17,7 +17,7 @@ export default function TeamCard(props:teamData) {
       />
       <h1>{props.name}</h1>
       <p>{props.description}</p>
-      <button className="p-2 bg-gray-500 border">View Details</button>
+      <button className="p-2 border">View Details</button>
     </div>
   );
 }
