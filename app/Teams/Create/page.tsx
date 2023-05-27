@@ -1,7 +1,7 @@
 "use client";
 import { FormEvent } from "react";
 
-export default function CreateTeam() {
+export default function Page() {
   function createTeam(e: FormEvent) {
     e.preventDefault();
   }
