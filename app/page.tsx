@@ -1,34 +1,22 @@
 "use client";
 import Navbar from "./Components/Navbar/Navbar";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  gql,
-} from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 
 export default function Home() {
-  const client = new ApolloClient({
-    uri: "http://localhost:4000",
-    cache: new InMemoryCache(),
-  });
   // const client = ...
+  const GET_LOCATIONS = gql`
+    query Teams {
+      teams {
+        name
+        desc
+        reqs
+        id
+      }
+    }
+  `;
 
-  client
-    .query({
-      query: gql`
-        query Teams {
-          teams {
-            name
-            desc
-            reqs
-            id
-          }
-        }
-      `,
-    })
-    .then((result) => console.log(result));
-
+  const { loading, error, data } = useQuery(GET_LOCATIONS);
+  console.log(loading, error, data);
   return (
     <>
       <Navbar />

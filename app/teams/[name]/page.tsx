@@ -2,6 +2,7 @@ import TeamDetails from "../../Components/TeamDetails/TeamDetails";
 
 export default function Page({ params }: { params: { name: string } }) {
   const { name } = params;
+
   return (
     <TeamDetails
       name={decodeURIComponent(name)}
