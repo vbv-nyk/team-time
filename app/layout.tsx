@@ -8,6 +8,9 @@ import {
   gql,
 } from "@apollo/client";
 
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -22,9 +25,11 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <ApolloProvider client={client}>
-        <body className={inter.className}>{children}</body>
-      </ApolloProvider>
+      <Provider store={store}>
+        <ApolloProvider client={client}>
+          <body className={inter.className}>{children}</body>
+        </ApolloProvider>
+      </Provider>
     </html>
   );
 }
