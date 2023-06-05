@@ -1,15 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { teamInterface } from "./teamSlice";
+import { teamInterface, teamsInterface } from "../services/types";
 
 export enum filterType {
   role,
   views,
   popularity,
-}
-
-export interface teamsInterface {
-  teams: teamInterface[];
 }
 
 const initialState: teamsInterface = {

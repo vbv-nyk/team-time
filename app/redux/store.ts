@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import teamSlice from "./teamSlice";
+import teamsSlice from "./teamsSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: { teamSlice, teamsSlice },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

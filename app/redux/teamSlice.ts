@@ -1,21 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { randomUUID } from "crypto";
-
-export interface teamInterface {
-  name: String;
-  desc: String;
-  img: String;
-  reqs: [String];
-  id: String;
-}
+import { v4 } from "uuid";
+import { teamInterface } from "../services/types";
 
 const initialState: teamInterface = {
   name: "",
   desc: "",
   img: "",
   reqs: [""],
-  id: randomUUID(),
+  id: v4(),
 };
 
 export const counterSlice = createSlice({
