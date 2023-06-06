@@ -1,9 +1,9 @@
 export interface teamInterface {
-  name: String;
-  desc: String;
-  img: String;
-  reqs: [String];
-  id: String;
+  name: string;
+  desc: string;
+  img: string;
+  reqs: [string];
+  id: string;
 }
 
 export interface teamsInterface {

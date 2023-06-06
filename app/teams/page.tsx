@@ -1,22 +1,22 @@
+"use client";
 import TeamCard from "../Components/Team-Card/TeamCard";
 import Navbar from "../Components/Navbar/Navbar";
+import { getTeams } from "../services/quries";
+import { useQuery } from "@apollo/client";
+import { teamInterface, teamsInterface } from "../services/types";
 
 export default function Page() {
-  const teamsData = [
-    {
-      imageUrl: "/TeamWork.png",
-      name: "Team Name",
-      description: "This team does so and so and so so lkasdjlaks",
-    },
-    {
-      imageUrl: "/TeamWork.png",
-      name: "Team Name",
-      description: "This team does so and so and so so lkasdjlaks",
-    },
-  ];
+  const {
+    loading,
+    error,
+    data: teamsData,
+  } = useQuery<teamsInterface>(getTeams);
 
-  const teams = teamsData.map((team, index) => (
-    <TeamCard {...team} key={index} />
+  if (loading) return <div>Loading...</div>;
+
+  console.log(teamsData);
+  const teams = teamsData?.teams.map((team: teamInterface) => (
+    <TeamCard {...team} key={team.id} />
   ));
 
   return (
