@@ -11,3 +11,15 @@ export const getTeams = gql`
     }
   }
 `;
+
+export const getTeamById = (id: string) => gql`
+  query Teams(id) {
+    teams {
+      name
+      desc
+      reqs
+      img
+      id
+    }
+  }
+`;
