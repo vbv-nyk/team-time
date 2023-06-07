@@ -13,10 +13,10 @@ export default function Page() {
     data: teamsData,
   } = useQuery<teamsInterface>(getTeams);
 
-  const [viewStyle, setViewStyle] = useState("list");
+  const [viewStyle, setViewStyle] = useState("card");
 
   function changeStyle() {
-    viewStyle === "list" ? setViewStyle("grid") : setViewStyle("list");
+    viewStyle === "list" ? setViewStyle("card") : setViewStyle("list");
   }
 
   if (loading) return <div>Loading...</div>;
@@ -27,18 +27,15 @@ export default function Page() {
   ));
 
   return (
-    <div className="p-4">
+    <div className="">
       <Navbar />
-
       <div className="mb-4 text-2xl font-bold text-center">Teams</div>
       <button onClick={changeStyle} className="px-3 py-2 border">
         {viewStyle}
       </button>
-      {viewStyle === "grid" && (
+      {viewStyle === "card" && (
         <div>
-          <div className="grid gap-3 grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))]">
-            {teams}
-          </div>
+          <div className="flex flex-col">{teams}</div>
         </div>
       )}
       {viewStyle === "list" && (
