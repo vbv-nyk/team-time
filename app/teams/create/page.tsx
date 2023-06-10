@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <div>
       <Navbar />
-      <form className="flex flex-col items-center justify-center w-full gap-2 p-2">
+      <form className="flex flex-col items-center justify-center w-full gap-4 p-2">
         <div className="flex flex-row flex-wrap items-center gap-4">
           <div className="flex items-center w-full gap-2">
             <label htmlFor="team-name" className="text-xs font-semibold">
@@ -40,7 +40,7 @@ export default function Page() {
             />
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center self-start">
           <label htmlFor="team-reqs" className="text-xs font-semibold">
             Add tags
           </label>
