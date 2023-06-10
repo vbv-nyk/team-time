@@ -16,7 +16,7 @@ export default function Page() {
   const [viewStyle, setViewStyle] = useState("card");
 
   function changeStyle() {
-    viewStyle === "list" ? setViewStyle("card") : setViewStyle("list");
+    // viewStyle === "list" ? setViewStyle("card") : setViewStyle("list");
   }
 
   if (loading) return <div>Loading...</div>;
@@ -30,7 +30,7 @@ export default function Page() {
     <div className="">
       <Navbar />
       <div className="mb-4 text-2xl font-bold text-center">Teams</div>
-      <button onClick={changeStyle} className="px-3 py-2 border">
+      <button onClick={changeStyle} className="px-3 py-2 borderm">
         {viewStyle}
       </button>
       {viewStyle === "card" && (
@@ -38,9 +38,9 @@ export default function Page() {
           <div className="flex flex-col">{teams}</div>
         </div>
       )}
-      {viewStyle === "list" && (
+      {/* {viewStyle === "list" && (
         <div className="flex flex-col gap-4">{teams}</div>
-      )}
+      )} */}
     </div>
   );
 }
