@@ -22,7 +22,7 @@ export default function TeamCard(props: teamCardInterface) {
     <Link href={`/teams/${props.name}`}>
       <div
         style={containerStyle}
-        className="items-center w-full gap-4 py-4 break-all shadow-sm shadow-neutral-600"
+        className="items-center w-[500px] gap-4 py-4 break-all shadow-sm shadow-neutral-600"
       >
         <div className="flex items-center gap-2 text-sm">
           <h1 className="font-semibold">{props.name}: </h1>
@@ -33,8 +33,8 @@ export default function TeamCard(props: teamCardInterface) {
         </div>
         <Image
           src={props.img}
-          height={300}
-          width={300}
+          height={500}
+          width={500}
           className="w-full"
           alt="Image For Your Project/Team"
         />

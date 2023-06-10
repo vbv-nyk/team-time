@@ -7,12 +7,16 @@ import { FormEvent, useRef, useState } from "react";
 export default function Page() {
   const tagFieldRef = useRef<HTMLInputElement>(null);
   const [tags, setTags] = useState<string[]>([]);
+  const [teamName, setTeamName] = useState("");
+  const [teamTitle, setTeamTitle] = useState("");
 
   function createTeam(e: FormEvent) {
     e.preventDefault();
   }
+
   function addTag(e: FormEvent) {
     e.preventDefault();
+    if (tags.length > 5) return;
     console.log(tagFieldRef);
     if (tagFieldRef.current?.value) {
       const tagFieldValue = tagFieldRef.current.value.toLowerCase();
@@ -43,9 +47,9 @@ export default function Page() {
   return (
     <div>
       <Navbar />
-      <div className="flex-row-reverse items-center justify-center gap-5 sm:flex">
-        <form className="flex flex-col items-start gap-4 p-2">
-          <div className="flex flex-wrap items-center gap-4">
+      <div className="flex-row-reverse items-center justify-end gap-5 sm:flex">
+        <form className="flex flex-col items-start gap-4 p-2 grow-0">
+          <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
               <label htmlFor="team-name" className="text-xs font-semibold">
                 Team Name
@@ -53,7 +57,9 @@ export default function Page() {
               <input
                 id="team-name"
                 type="text"
-                className="bg-transparent  min-w-[200px] border-b outline-none border-b-black"
+                onInput={(e: any) => setTeamName(e.target.value)}
+                maxLength={20}
+                className="bg-transparent border-b outline-none border-b-black"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -66,7 +72,9 @@ export default function Page() {
               <input
                 id="team-title"
                 type="text"
-                className="bg-transparent min-w-[200px] border-b outline-none border-b-black"
+                onInput={(e: any) => setTeamTitle(e.target.value)}
+                className="bg-transparent border-b outline-none border-b-black"
+                maxLength={50}
               />
             </div>
           </div>
@@ -76,7 +84,8 @@ export default function Page() {
                 Add Tags
               </label>
               <input
-                id="team-title"
+                id="team-reqs"
+                maxLength={30}
                 type="text"
                 ref={tagFieldRef}
                 className="bg-transparent max-w-[200px] border-b outline-none border-b-black text-center"
@@ -90,15 +99,15 @@ export default function Page() {
               </button>
             </div>
 
-            <div className="flex flex-wrap ">{addedTags}</div>
+            <div className="flex flex-wrap w-fit">{addedTags}</div>
           </div>
         </form>
         <section className="flex flex-col items-center justify-center gap-2 m-4">
           <h1 className="text-xl font-semibold">Preview</h1>
           <TeamCard
-            desc="ASDAS"
+            desc={teamTitle}
             id="asda"
-            name="asda"
+            name={teamName}
             img="https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/uploads/2017/03/msteamshero_0.png?itok=Etuo8PEv"
             reqs={tags}
             viewStyle="card"
