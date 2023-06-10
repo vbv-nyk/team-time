@@ -38,7 +38,7 @@ export default function TeamCard(props: teamCardInterface) {
           className="w-full"
           alt="Image For Your Project/Team"
         />
-        <div className="flex flex-wrap justify-center gap-3 overflow-x-scroll text-xs font-bold text-white">
+        <div className="flex flex-wrap justify-center w-full gap-3 text-xs font-bold text-white">
           {tags}
         </div>
       </div>
