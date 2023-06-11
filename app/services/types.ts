@@ -2,7 +2,8 @@ export interface teamInterface {
   name: string;
   desc: string;
   img: string;
-  reqs: [string];
+  createdBy: string;
+  reqs: string[];
   id: string;
 }
 

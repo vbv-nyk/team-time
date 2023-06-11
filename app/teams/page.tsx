@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar/Navbar";
 import { getTeams } from "../services/queries";
 import { useQuery } from "@apollo/client";
 import { teamInterface, teamsInterface } from "../services/types";
+import { useState } from "react";
 
 export default function Page() {
   const {
@@ -12,22 +13,30 @@ export default function Page() {
     data: teamsData,
   } = useQuery<teamsInterface>(getTeams);
 
+  const [viewStyle, setViewStyle] = useState("card");
+
+  function changeStyle() {
+    // viewStyle === "list" ? setViewStyle("card") : setViewStyle("list");
+  }
+
   if (loading) return <div>Loading...</div>;
 
   console.log(teamsData);
   const teams = teamsData?.teams.map((team: teamInterface) => (
-    <TeamCard {...team} key={team.id} />
+    <TeamCard {...team} key={team.id} viewStyle={viewStyle} isEditing={false} />
   ));
 
   return (
-    <>
+    <div className="">
       <Navbar />
-      <div className="p-4">
-        <div className="text-2xl font-bold">Teams</div>
-        <div className="grid gap-3 grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))]">
-          {teams}
-        </div>
+      <div className="p-2">
+        <div className="mb-4 text-lg font-bold">Teams</div>
+        {viewStyle === "card" && (
+          <div>
+            <div className="flex flex-col gap-2">{teams}</div>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }

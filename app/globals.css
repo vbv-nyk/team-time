@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: rgb(243 244 246);
+}
+>>>>>>> c2f9bc73c81b538f0d26008e7f250cb12eb99078
