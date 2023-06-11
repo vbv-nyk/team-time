@@ -3,8 +3,8 @@ import Navbar from "@/app/Components/Navbar/Navbar";
 import TeamCard from "@/app/Components/Team-Card/TeamCard";
 import { useMutation } from "@apollo/client";
 import { FormEvent, useRef, useState } from "react";
-import TagsComponent from "./Components/tagsComponent";
-import AddedTags from "./Components/addedTags";
+import AddedTags from "./Components/TagComponents/addedTags";
+import TagsComponent from "./Components/TagComponents/tagsComponent";
 
 export default function Page() {
   const [tags, setTags] = useState<string[]>([]);
