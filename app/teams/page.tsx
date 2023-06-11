@@ -33,7 +33,9 @@ export default function Page() {
         <div className="mb-4 text-lg font-bold">Teams</div>
         {viewStyle === "card" && (
           <div>
-            <div className="flex flex-col gap-2">{teams}</div>
+            <div className="sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-5 flex flex-col gap-2">
+              {teams}
+            </div>
           </div>
         )}
       </div>

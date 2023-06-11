@@ -13,6 +13,7 @@ export default function TeamCard(props: teamCardInterface) {
   const containerStyle: CSSProperties = {
     display: "flex",
     flexDirection: props.viewStyle === "list" ? "row" : "column",
+    width: props.isEditing ? "450px" : "100%",
   };
 
   const imageRef = useRef<HTMLInputElement>(null);
@@ -50,7 +51,7 @@ export default function TeamCard(props: teamCardInterface) {
   return (
     <div
       style={containerStyle}
-      className="items-center sm:w-[500px] w-full gap-4 py-2 break-all shadow-sm shadow-neutral-600"
+      className="items-center h-max gap-4 py-2 flex flex-col break-all shadow-sm shadow-neutral-600"
     >
       <div className="flex items-center gap-2 text-sm">
         <h1 className="font-semibold">{props.name}: </h1>
@@ -82,11 +83,11 @@ export default function TeamCard(props: teamCardInterface) {
             src={`https://storage.googleapis.com/pai-images/b5db887d057b40178ca2bbdf8cb7510d.png`}
             height={1000}
             width={1000}
-            className="aspect-square "
+            className="h-full w-full"
             alt="Image For Your Project/Team"
           />
         </Link>
-        <div className="flex flex-wrap justify-center gap-3 mt-2 text-xs font-bold text-white">
+        <div className="flex flex-wrap justify-center gap-3 mt-2 text-xs font-bold text-white ">
           {tags}
         </div>
       </div>
