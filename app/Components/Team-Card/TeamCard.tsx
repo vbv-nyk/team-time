@@ -22,7 +22,7 @@ export default function TeamCard(props: teamCardInterface) {
     <Link href={`/teams/${props.name}`}>
       <div
         style={containerStyle}
-        className="items-center w-[500px] gap-4 py-4 break-all shadow-sm shadow-neutral-600"
+        className="items-center sm:w-[500px] w-full gap-4 py-4 break-all shadow-sm shadow-neutral-600"
       >
         <div className="flex items-center gap-2 text-sm">
           <h1 className="font-semibold">{props.name}: </h1>
