@@ -1,7 +1,7 @@
 "use client";
 import TeamCard from "../Components/Team-Card/TeamCard";
 import Navbar from "../Components/Navbar/Navbar";
-import { getTeams } from "../services/quries";
+import { getTeams } from "../services/queries";
 import { useQuery } from "@apollo/client";
 import { teamInterface, teamsInterface } from "../services/types";
 import { useState } from "react";
