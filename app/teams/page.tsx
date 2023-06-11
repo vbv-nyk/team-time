@@ -23,24 +23,23 @@ export default function Page() {
 
   console.log(teamsData);
   const teams = teamsData?.teams.map((team: teamInterface) => (
-    <TeamCard {...team} key={team.id} viewStyle={viewStyle} />
+    <TeamCard {...team} key={team.id} viewStyle={viewStyle} isEditing={false} />
   ));
 
   return (
     <div className="">
       <Navbar />
-      <div className="mb-4 text-2xl font-bold text-center">Teams</div>
-      <button onClick={changeStyle} className="px-3 py-2 borderm">
-        {viewStyle}
-      </button>
-      {viewStyle === "card" && (
-        <div>
-          <div className="flex flex-col">{teams}</div>
-        </div>
-      )}
-      {/* {viewStyle === "list" && (
-        <div className="flex flex-col gap-4">{teams}</div>
-      )} */}
+      <div className="p-2">
+        <div className="mb-4 text-lg font-bold">Teams</div>
+        <button onClick={changeStyle} className="px-3 py-2 borderm">
+          {viewStyle}
+        </button>
+        {viewStyle === "card" && (
+          <div>
+            <div className="flex flex-col">{teams}</div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

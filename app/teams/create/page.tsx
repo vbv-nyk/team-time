@@ -18,9 +18,9 @@ export default function Page() {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-col items-center justify-end gap-5 sm:flex-row-reverse sm:flex">
+      <div className="flex flex-col items-center justify-end gap-1 sm:flex-row-reverse sm:flex">
         <form className="flex flex-col items-start gap-4 p-2 grow-0">
-          <div className="text-xl font-semibold">Enter Team Details</div>
+          <div className="text-lg font-light">Enter Team Details</div>
           <div className="flex flex-wrap items-center justify-start gap-4 sm:justify-normal ">
             <div className="flex items-center gap-3 ">
               <label
@@ -57,8 +57,9 @@ export default function Page() {
           <AddedTags tags={tags} setTags={setTags} />
         </form>
         <section className="flex flex-col justify-center gap-2 p-2 sm:m-4 ">
-          <h1 className="text-xl font-semibold">Preview</h1>
+          <h1 className="text-lg font-light">Preview</h1>
           <TeamCard
+            isEditing={true}
             desc={teamTitle}
             id="asda"
             name={teamName}
