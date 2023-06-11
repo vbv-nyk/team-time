@@ -31,12 +31,9 @@ export default function Page() {
       <Navbar />
       <div className="p-2">
         <div className="mb-4 text-lg font-bold">Teams</div>
-        <button onClick={changeStyle} className="px-3 py-2 borderm">
-          {viewStyle}
-        </button>
         {viewStyle === "card" && (
           <div>
-            <div className="flex flex-col">{teams}</div>
+            <div className="flex flex-col gap-2">{teams}</div>
           </div>
         )}
       </div>

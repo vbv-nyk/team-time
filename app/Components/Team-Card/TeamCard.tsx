@@ -1,7 +1,8 @@
 import { teamInterface } from "@/app/services/types";
 import Image from "next/image";
+import { FormEvent, useRef, useState } from "react";
 import Link from "next/link";
-import { CSSProperties } from "react";
+import { ChangeEvent, CSSProperties } from "react";
 
 interface teamCardInterface extends teamInterface {
   viewStyle: string;
@@ -14,13 +15,38 @@ export default function TeamCard(props: teamCardInterface) {
     flexDirection: props.viewStyle === "list" ? "row" : "column",
   };
 
-  function openFilePicker() {}
+  const imageRef = useRef<HTMLInputElement>(null);
+  const [imageSrc, setImageSrc] = useState<string>(props.img);
+
+  // Convert a file to base64 string
+  const toBase64 = (file: File) => {
+    return new Promise<string>((resolve, reject) => {
+      const fileReader = new FileReader();
+
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result as string);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  async function changeImage(e: ChangeEvent<HTMLInputElement>) {
+    if (!e.target.files) return;
+    const base64: string = await toBase64(e.target.files[0]);
+    setImageSrc(base64);
+  }
 
   const tags = props.reqs.map((req, i) => (
     <div key={i} className="px-3 py-1 bg-blue-800 rounded-full">
       {req}
     </div>
   ));
+
   return (
     <div
       style={containerStyle}
@@ -28,7 +54,7 @@ export default function TeamCard(props: teamCardInterface) {
     >
       <div className="flex items-center gap-2 text-sm">
         <h1 className="font-semibold">{props.name}: </h1>
-        <div> Posted By {"Vaibhav Nayak"}</div>
+        <div> Posted By {props.createdBy}</div>
       </div>
       <div>
         <p className="px-1 text-xl hyphens-auto"> {props.desc}</p>
@@ -36,23 +62,31 @@ export default function TeamCard(props: teamCardInterface) {
       {props.isEditing && (
         <label
           htmlFor="image-picker"
-          className="relative self-end px-4 py-2 text-xs font-bold text-white bg-blue-600 hover:cursor-pointer"
+          className="relative self-end px-4 py-2 mb-[-48px] text-xs font-bold text-white bg-blue-600 hover:cursor-pointer"
         >
           Edit
-          <input type="file" id="image-picker" className="hidden" />
+          <input
+            type="file"
+            id="image-picker"
+            className="hidden"
+            ref={imageRef}
+            accept=".webp, .png, .apng, .avif, .gif, .jpeg, .svg"
+            onChange={changeImage}
+          />
         </label>
       )}
       <div>
         <Link href={`/teams/${props.name}`}>
           <Image
-            src={props.img}
-            height={500}
-            width={500}
-            className="w-full mt-[-50px]"
+            // src={imageSrc.toString()}
+            src={`https://storage.googleapis.com/pai-images/b5db887d057b40178ca2bbdf8cb7510d.png`}
+            height={1000}
+            width={1000}
+            className="aspect-square "
             alt="Image For Your Project/Team"
           />
         </Link>
-        <div className="flex flex-wrap justify-center w-full gap-3 mt-2 text-xs font-bold text-white">
+        <div className="flex flex-wrap justify-center gap-3 mt-2 text-xs font-bold text-white">
           {tags}
         </div>
       </div>
