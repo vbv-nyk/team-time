@@ -16,10 +16,10 @@ export default function Page() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col justify-center gap-1">
       <Navbar />
       <div className="flex flex-col items-center justify-end gap-1 sm:flex-row-reverse sm:flex">
-        <form className="flex flex-col items-start gap-4 p-2 grow-0">
+        <form className="flex flex-col items-start gap-4 grow-0">
           <div className="text-lg font-light">Enter Team Details</div>
           <div className="flex flex-wrap items-center justify-start gap-4 sm:justify-normal ">
             <div className="flex items-center gap-3 ">
@@ -67,6 +67,9 @@ export default function Page() {
             reqs={tags}
             viewStyle="card"
           />
+          <button className="px-4 py-2 text-xs font-extrabold text-white bg-green-700 sm:self-start">
+            Next
+          </button>
         </section>
       </div>
     </div>
