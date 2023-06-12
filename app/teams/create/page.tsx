@@ -65,7 +65,7 @@ export default function Page() {
             <TeamCard
               isEditing={true}
               createdBy={"Vaibhav Nayak"}
-              desc={teamTitle}
+              title={teamTitle}
               id="asda"
               name={teamName}
               img="https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/uploads/2017/03/msteamshero_0.png?itok=Etuo8PEv"
@@ -74,7 +74,9 @@ export default function Page() {
             />
             <button
               className="px-4 py-2 text-xs font-extrabold text-white bg-green-700 sm:self-end"
-              onClick={() => setStep(2)}
+              onClick={() => {
+                setStep(2);
+              }}
             >
               Next
             </button>
@@ -84,7 +86,7 @@ export default function Page() {
       {step === 2 && (
         <SelectTheme
           createdBy={"Vaibhav Nayak"}
-          desc={teamTitle}
+          title={teamTitle}
           id="asda"
           name={teamName}
           img="https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/uploads/2017/03/msteamshero_0.png?itok=Etuo8PEv"

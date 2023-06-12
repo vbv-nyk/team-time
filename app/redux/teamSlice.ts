@@ -7,6 +7,8 @@ const initialState: teamInterface = {
   name: "",
   desc: "",
   img: "",
+  title: "",
+  createdBy: "",
   reqs: [""],
   id: v4(),
 };
@@ -15,16 +17,16 @@ export const counterSlice = createSlice({
   name: "team",
   initialState,
   reducers: {
-    updateName: (state, action: PayloadAction<String>) => {
+    updateName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
-    updateDesc: (state, action: PayloadAction<String>) => {
+    updateDesc: (state, action: PayloadAction<string>) => {
       state.desc = action.payload;
     },
-    updateReqs: (state, action: PayloadAction<[String]>) => {
+    updateReqs: (state, action: PayloadAction<[string]>) => {
       state.reqs = action.payload;
     },
-    updateImg: (state, action: PayloadAction<String>) => {
+    updateImg: (state, action: PayloadAction<string>) => {
       state.img = action.payload;
     },
   },

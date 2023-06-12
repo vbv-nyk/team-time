@@ -51,14 +51,14 @@ export default function TeamCard(props: teamCardInterface) {
   return (
     <div
       style={containerStyle}
-      className="items-center h-max gap-4 py-2 flex flex-col break-all shadow-sm shadow-neutral-600"
+      className="flex flex-col items-center gap-4 py-2 break-all shadow-sm h-max shadow-neutral-600"
     >
       <div className="flex items-center gap-2 text-sm">
         <h1 className="font-semibold">{props.name}: </h1>
         <div> Posted By {props.createdBy}</div>
       </div>
       <div>
-        <p className="px-1 text-xl hyphens-auto"> {props.desc}</p>
+        <p className="px-1 text-xl hyphens-auto"> {props.title}</p>
       </div>
       {props.isEditing && (
         <label
@@ -83,7 +83,7 @@ export default function TeamCard(props: teamCardInterface) {
             src={`https://storage.googleapis.com/pai-images/b5db887d057b40178ca2bbdf8cb7510d.png`}
             height={1000}
             width={1000}
-            className="h-full w-full"
+            className="w-full h-full"
             alt="Image For Your Project/Team"
           />
         </Link>

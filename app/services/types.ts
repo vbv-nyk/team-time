@@ -1,7 +1,8 @@
 export interface teamInterface {
   name: string;
-  desc: string;
+  desc?: string;
   img: string;
+  title: string;
   createdBy: string;
   reqs: string[];
   id: string;
