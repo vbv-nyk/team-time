@@ -5,11 +5,13 @@ import { useMutation } from "@apollo/client";
 import { FormEvent, useRef, useState } from "react";
 import AddedTags from "./Components/TagComponents/addedTags";
 import TagsComponent from "./Components/TagComponents/tagsComponent";
+import SelectTheme from "./Components/SelectTheme/SelectTheme";
 
 export default function Page() {
   const [tags, setTags] = useState<string[]>([]);
   const [teamName, setTeamName] = useState("");
   const [teamTitle, setTeamTitle] = useState("");
+  const [editorState, setEditorState] = useState();
   const [step, setStep] = useState(1);
 
   function createTeam(e: FormEvent) {
@@ -79,7 +81,16 @@ export default function Page() {
           </section>
         </div>
       )}
-      {step === 2 && <div>Hello World</div>}
+      {step === 2 && (
+        <SelectTheme
+          createdBy={"Vaibhav Nayak"}
+          desc={teamTitle}
+          id="asda"
+          name={teamName}
+          img="https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/uploads/2017/03/msteamshero_0.png?itok=Etuo8PEv"
+          reqs={tags}
+        />
+      )}
     </div>
   );
 }

@@ -27,5 +27,8 @@
     "tailwindcss": "^3.3.2",
     "typescript": "5.0.4",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/react-draft-wysiwyg": "^1.13.4"
   }
 }
