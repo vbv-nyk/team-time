@@ -13,7 +13,7 @@ export default function TeamCard(props: teamCardInterface) {
   const containerStyle: CSSProperties = {
     display: "flex",
     flexDirection: props.viewStyle === "list" ? "row" : "column",
-    width: props.isEditing ? "450px" : "100%",
+    minWidth: props.isEditing ? "100%" : "100%",
   };
 
   const imageRef = useRef<HTMLInputElement>(null);

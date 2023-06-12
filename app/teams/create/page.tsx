@@ -61,7 +61,7 @@ export default function Page() {
             <AddedTags tags={tags} setTags={setTags} />
           </form>
           <section className="flex flex-col justify-center gap-2 p-2 sm:m-4 ">
-            <h1 className="text-lg font-light">Preview</h1>
+            <h1 className="text-lg font-light text-center">Preview</h1>
             <TeamCard
               isEditing={true}
               createdBy={"Vaibhav Nayak"}
