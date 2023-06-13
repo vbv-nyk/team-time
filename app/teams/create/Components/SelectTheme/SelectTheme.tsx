@@ -2,7 +2,14 @@ import { teamInterface } from "@/app/services/types";
 import { useState } from "react";
 import Avani from "./Templates/AVANI/Avani";
 
+// interface posterInterface extends teamInterface {
+//   images: [string];
+// }
+
 export default function SelectTheme(props: teamInterface) {
+  //create elements common to all themes
+  //use redux toolkit to share them across these elements
+
   enum themeNames {
     AVANI,
     ASHI,

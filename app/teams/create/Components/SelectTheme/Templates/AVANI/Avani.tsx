@@ -1,8 +1,11 @@
 import { teamInterface } from "@/app/services/types";
 import Image from "next/image";
+import ElementsPanel from "../../ElementsPanel";
+import ThemeControls from "../../ThemeControls";
 
 export default function Avani(props: teamInterface) {
   const { name, title, createdBy, img, reqs } = props;
+
   return (
     <div className="flex flex-col gap-5 bg-[#e6f0e8] rounded-lg p-10">
       <div className="flex flex-col items-center gap-1">
@@ -29,20 +32,9 @@ export default function Avani(props: teamInterface) {
         </h1>
         <textarea className="w-full p-4 bg-transparent border-2 min-h-[100px] outline-none " /> */}
       </div>
-      <div className="flex flex-wrap items-start content-end justify-between gap-2">
-        <div>
-          <label className="px-4 py-2 text-sm font-bold border-2 border-blue-600 hover:bg-blue-600 hover:border-transparent hover:text-white">
-            Add Element
-          </label>
-        </div>
-        <div className="flex gap-2">
-          <button className="px-4 py-2 text-sm font-bold border-2 border-red-600 hover:bg-red-600 hover:border-transparent hover:text-white">
-            Save As Draft
-          </button>
-          <button className="px-4 py-2 text-sm font-bold border-2 border-green-600 hover:bg-green-600 hover:border-transparent hover:text-white">
-            Create Team
-          </button>
-        </div>
+      <div className="flex flex-col self-start gap-4 p-6 bg-white">
+        <ElementsPanel />
+        <ThemeControls />
       </div>
     </div>
   );
