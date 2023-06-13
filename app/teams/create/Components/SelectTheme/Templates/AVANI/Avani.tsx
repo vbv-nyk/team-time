@@ -17,13 +17,12 @@ export default function Avani(props: teamInterface) {
           </div>
         </div>
       </div>
-      <div className="image-section">
+      <div className="w-full overflow-scroll ">
         <Image
           src={img}
           height={2000}
           width={2000}
           alt="Image describing project"
-          className="w-full"
         />
       </div>
       <div className="flex flex-col gap-4">
@@ -32,7 +31,7 @@ export default function Avani(props: teamInterface) {
         </h1>
         <textarea className="w-full p-4 bg-transparent border-2 min-h-[100px] outline-none " /> */}
       </div>
-      <div className="flex flex-col self-start gap-4 p-6 bg-white">
+      <div className="flex flex-col items-center gap-1 p-6 bg-white">
         <ElementsPanel />
         <ThemeControls />
       </div>
