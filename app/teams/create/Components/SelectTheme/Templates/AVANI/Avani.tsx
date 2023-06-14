@@ -2,9 +2,13 @@ import { teamInterface } from "@/app/services/types";
 import Image from "next/image";
 import ElementsPanel from "../../ElementsPanel";
 import ThemeControls from "../../ThemeControls";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
 
-export default function Avani(props: teamInterface) {
-  const { name, title, createdBy, img, reqs } = props;
+export default function Avani() {
+  const { name, title, createdBy, img, reqs } = useSelector(
+    (state: RootState) => state.teamSlice
+  );
 
   return (
     <div className="flex flex-col gap-5 bg-[#e6f0e8] rounded-lg p-10">
@@ -17,23 +21,35 @@ export default function Avani(props: teamInterface) {
           </div>
         </div>
       </div>
-      <div className="w-full overflow-scroll ">
+      <div className="flex justify-center w-full">
         <Image
-          src={img}
+          src={
+            img ||
+            `https://storage.googleapis.com/pai-images/b5db887d057b40178ca2bbdf8cb7510d.png`
+          }
           height={2000}
           width={2000}
+          className="max-w-[300px] min-w-[250px]"
           alt="Image describing project"
         />
       </div>
       <div className="flex flex-col gap-4">
-        {/* <h1 className="text-lg text-[#592121] font-medium ">
+        <h1 className="text-lg text-[#592121]  font-medium ">
           What We&apos;re Trying To Achieve
         </h1>
-        <textarea className="w-full p-4 bg-transparent border-2 min-h-[100px] outline-none " /> */}
+        <textarea className="w-full p-4 bg-transparent border-b-black border-2 min-h-[100px] outline-none rounded-sm" />
       </div>
-      <div className="flex flex-col items-center gap-1 p-6 bg-white">
-        <ElementsPanel />
-        <ThemeControls />
+      <div className="flex flex-col gap-4">
+        <h1 className="text-lg text-[#592121] font-medium ">
+          How To Contact Us
+        </h1>
+        <textarea className="w-full p-4 bg-transparent border-b-black border-2 min-h-[100px] outline-none " />
+      </div>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-lg text-[#592121] font-medium ">
+          Sources for More Information
+        </h1>
+        <textarea className="w-full p-4 bg-transparent border-b-black border-2 min-h-[100px] outline-none " />
       </div>
     </div>
   );

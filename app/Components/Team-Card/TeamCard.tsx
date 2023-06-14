@@ -3,8 +3,11 @@ import Image from "next/image";
 import { FormEvent, useRef, useState } from "react";
 import Link from "next/link";
 import { ChangeEvent, CSSProperties } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
+import { updateImg } from "@/app/redux/teamSlice";
 
-interface teamCardInterface extends teamInterface {
+interface teamCardInterface {
   viewStyle: string;
   isEditing: boolean;
 }
@@ -15,9 +18,11 @@ export default function TeamCard(props: teamCardInterface) {
     flexDirection: props.viewStyle === "list" ? "row" : "column",
     minWidth: props.isEditing ? "100%" : "100%",
   };
+  const { name, img, title, reqs, createdBy } = useSelector(
+    (state: RootState) => state.teamSlice
+  );
 
   const imageRef = useRef<HTMLInputElement>(null);
-  const [imageSrc, setImageSrc] = useState<string>(props.img);
 
   // Convert a file to base64 string
   const toBase64 = (file: File) => {
@@ -39,10 +44,11 @@ export default function TeamCard(props: teamCardInterface) {
   async function changeImage(e: ChangeEvent<HTMLInputElement>) {
     if (!e.target.files) return;
     const base64: string = await toBase64(e.target.files[0]);
-    setImageSrc(base64);
+    // setImageSrc(base64);
+    // useDispatch(updateImg(base64.toString))
   }
 
-  const tags = props.reqs.map((req, i) => (
+  const tags = reqs.map((req, i) => (
     <div key={i} className="px-3 py-1 bg-blue-800 rounded-full">
       {req}
     </div>
@@ -54,11 +60,11 @@ export default function TeamCard(props: teamCardInterface) {
       className="flex flex-col items-center gap-4 py-2 break-all shadow-sm h-max shadow-neutral-600"
     >
       <div className="flex items-center gap-2 text-sm">
-        <h1 className="font-semibold">{props.name}: </h1>
-        <div> Posted By {props.createdBy}</div>
+        <h1 className="font-semibold">{name}: </h1>
+        <div> Posted By {createdBy}</div>
       </div>
       <div>
-        <p className="px-1 text-xl hyphens-auto"> {props.title}</p>
+        <p className="px-1 text-xl hyphens-auto"> {title}</p>
       </div>
       {props.isEditing && (
         <label
@@ -77,13 +83,16 @@ export default function TeamCard(props: teamCardInterface) {
         </label>
       )}
       <div>
-        <Link href={`/teams/${props.name}`}>
+        <Link href={`/teams/${name}`}>
           <Image
             // src={imageSrc.toString()}
-            src={`https://storage.googleapis.com/pai-images/b5db887d057b40178ca2bbdf8cb7510d.png`}
+            src={
+              img ||
+              `https://storage.googleapis.com/pai-images/b5db887d057b40178ca2bbdf8cb7510d.png`
+            }
             height={1000}
             width={1000}
-            className="w-full h-full"
+            className="w-full h-full min-w-[300px]"
             alt="Image For Your Project/Team"
           />
         </Link>

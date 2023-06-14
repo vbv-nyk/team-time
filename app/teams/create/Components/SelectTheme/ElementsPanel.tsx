@@ -2,9 +2,13 @@ import Image from "next/image";
 import { FormEvent, useState } from "react";
 
 export default function ElementsPanel() {
+  function paragraphOptions() {
+    console.log("Hello ");
+  }
   const elementsData = [
     {
       elementName: "Paragraph",
+      onclick: paragraphOptions,
     },
     {
       elementName: "Large Header",
@@ -30,7 +34,8 @@ export default function ElementsPanel() {
   const elementOptions = elements.map((element, i) => (
     <div
       key={i}
-      className="flex gap-1 p-2 px-3 font-bold border-2 border-gray-500 rounded-full hover:cursor-pointer hover:text-white hover:bg-blue-500"
+      onClick={element.onclick}
+      className="flex gap-1 px-3 py-1 font-bold border-2 border-gray-500 rounded-full hover:cursor-pointer hover:text-white hover:bg-blue-500"
     >
       <button className="border-gray-600 ">{element.elementName}</button>
       <div className="text-xl">+</div>
@@ -50,7 +55,7 @@ export default function ElementsPanel() {
           placeholder="Filter Elements"
         />
       </div>
-      <div className="flex flex-wrap gap-2 text-xs">{elementOptions}</div>
+      <div className="flex flex-wrap gap-2 text-xs h-max">{elementOptions}</div>
     </div>
   );
 }

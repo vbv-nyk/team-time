@@ -6,12 +6,15 @@ import { FormEvent, useRef, useState } from "react";
 import AddedTags from "./Components/TagComponents/addedTags";
 import TagsComponent from "./Components/TagComponents/tagsComponent";
 import SelectTheme from "./Components/SelectTheme/SelectTheme";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/app/redux/store";
+import { updateName, updateReqs, updateTitle } from "@/app/redux/teamSlice";
 
 export default function Page() {
-  const [tags, setTags] = useState<string[]>([]);
-  const [teamName, setTeamName] = useState("");
-  const [teamTitle, setTeamTitle] = useState("");
-  const [editorState, setEditorState] = useState();
+  const { name, title, reqs, placeholder, desc, createdBy, img } = useSelector(
+    (state: RootState) => state.teamSlice
+  );
+  const dispatch = useDispatch();
   const [step, setStep] = useState(1);
 
   function createTeam(e: FormEvent) {
@@ -36,7 +39,8 @@ export default function Page() {
                 <input
                   id="team-name"
                   type="text"
-                  onInput={(e: any) => setTeamName(e.target.value)}
+                  value={name}
+                  onInput={(e: any) => dispatch(updateName(e.target.value))}
                   maxLength={20}
                   className="bg-transparent border-b outline-none border-b-black"
                 />
@@ -50,28 +54,20 @@ export default function Page() {
                 </label>
                 <input
                   id="team-title"
+                  value={title}
                   type="text"
-                  onInput={(e: any) => setTeamTitle(e.target.value)}
+                  onInput={(e: any) => dispatch(updateTitle(e.target.value))}
                   className="bg-transparent border-b outline-none border-b-black"
                   maxLength={50}
                 />
               </div>
-              <TagsComponent tags={tags} setTags={setTags} />
+              <TagsComponent />
             </div>
-            <AddedTags tags={tags} setTags={setTags} />
+            <AddedTags />
           </form>
           <section className="flex flex-col justify-center gap-2 p-2 sm:m-4 ">
             <h1 className="text-lg font-light text-center">Preview</h1>
-            <TeamCard
-              isEditing={true}
-              createdBy={"Vaibhav Nayak"}
-              title={teamTitle}
-              id="asda"
-              name={teamName}
-              img="https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/uploads/2017/03/msteamshero_0.png?itok=Etuo8PEv"
-              reqs={tags}
-              viewStyle="card"
-            />
+            <TeamCard isEditing={true} viewStyle="card" />
             <button
               className="px-4 py-2 text-xs font-extrabold text-white bg-green-700 sm:self-end"
               onClick={() => {
@@ -83,16 +79,7 @@ export default function Page() {
           </section>
         </div>
       )}
-      {step === 2 && (
-        <SelectTheme
-          createdBy={"Vaibhav Nayak"}
-          title={teamTitle}
-          id="asda"
-          name={teamName}
-          img="https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/uploads/2017/03/msteamshero_0.png?itok=Etuo8PEv"
-          reqs={tags}
-        />
-      )}
+      {step === 2 && <SelectTheme setStep={setStep} />}
     </div>
   );
 }

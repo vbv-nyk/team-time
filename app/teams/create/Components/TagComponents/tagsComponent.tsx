@@ -1,22 +1,21 @@
+import { RootState } from "@/app/redux/store";
+import teamSlice, { updateReqs } from "@/app/redux/teamSlice";
 import { FormEvent, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-interface tagComponentProps {
-  tags: string[];
-  setTags: Function;
-}
-
-export default function TagsComponent(props: tagComponentProps) {
+export default function TagsComponent() {
   const tagFieldRef = useRef<HTMLInputElement>(null);
-  const { tags, setTags } = props;
+  const { reqs } = useSelector((state: RootState) => state.teamSlice);
+  const dispatch = useDispatch();
 
   function addTag(e: FormEvent) {
     e.preventDefault();
-    if (tags.length > 5) return;
+    if (reqs.length > 5) return;
     console.log(tagFieldRef);
     if (tagFieldRef.current?.value) {
       const tagFieldValue = tagFieldRef.current.value.toLowerCase();
-      if (!tags.includes(tagFieldValue))
-        setTags([...props.tags, tagFieldValue]);
+      if (!reqs.includes(tagFieldValue))
+        dispatch(updateReqs([...reqs, tagFieldValue]));
       tagFieldRef.current.value = "";
     }
   }
