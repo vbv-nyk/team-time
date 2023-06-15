@@ -5,7 +5,7 @@ export interface teamInterface {
   title: string;
   createdBy: string;
   reqs: string[];
-  placeholder: any;
+  placeholder: placeholderInterface;
   id: string;
 }
 
@@ -24,4 +24,10 @@ export interface mainPostInterface extends frontPostInterface {
 
 export interface teamsInterface {
   teams: teamInterface[];
+}
+
+export interface placeholderInterface {
+  "What Are We Trying To Achieve": string;
+  "How To Contact Us": string;
+  "Sources for More Information": string;
 }

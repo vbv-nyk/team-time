@@ -4,8 +4,15 @@ import { v4 } from "uuid";
 import {
   frontPostInterface,
   mainPostInterface,
+  placeholderInterface,
   teamInterface,
 } from "../services/types";
+
+const placeholder: placeholderInterface = {
+  "What Are We Trying To Achieve": "",
+  "How To Contact Us": "",
+  "Sources for More Information": "",
+};
 
 const initialState: teamInterface = {
   name: "",
@@ -14,7 +21,7 @@ const initialState: teamInterface = {
   title: "",
   createdBy: "",
   reqs: [],
-  placeholder: {},
+  placeholder,
   id: v4(),
 };
 

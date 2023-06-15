@@ -6,12 +6,11 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
 
 export default function Avani() {
-  const { name, title, createdBy, img, reqs } = useSelector(
+  const { name, title, createdBy, img, reqs, placeholder } = useSelector(
     (state: RootState) => state.teamSlice
   );
-
   return (
-    <div className="flex flex-col gap-8 p-10 rounded-lg bg-avani-background">
+    <div className="flex flex-col gap-8 p-1 rounded-lg sm:p-4 bg-avani-background">
       <div className="flex flex-col items-center gap-1">
         <div className="text-3xl font-bold text-center text-avani-lheader">
           {name}
