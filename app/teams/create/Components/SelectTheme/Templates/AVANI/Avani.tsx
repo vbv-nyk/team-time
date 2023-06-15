@@ -4,6 +4,11 @@ import ElementsPanel from "../../ElementsPanel";
 import ThemeControls from "../../ThemeControls";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
+import {
+  updateAchieveReq,
+  updateContactReq,
+  updateSources,
+} from "@/app/redux/teamSlice";
 
 export default function Avani() {
   const { name, title, createdBy, img, reqs, placeholder } = useSelector(
@@ -44,7 +49,7 @@ export default function Avani() {
             placeholder={
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
             }
-            // onChange={(e)=>dispatch()}
+            onChange={(e) => dispatch(updateAchieveReq(e.target.value))}
             value={placeholder["What Are We Trying To Achieve"]}
           />
         </div>
@@ -58,6 +63,7 @@ export default function Avani() {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           }
           value={placeholder["How To Contact Us"]}
+          onChange={(e) => dispatch(updateContactReq(e.target.value))}
           className="w-full text-[#4626ff] resize-none placeholder-[#4726ff9d]  bg-transparent min-h-[100px] outline-none "
         />
       </div>
@@ -69,7 +75,8 @@ export default function Avani() {
           placeholder={
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           }
-          value={placeholder["How To Contact Us"]}
+          onChange={(e) => dispatch(updateSources(e.target.value))}
+          value={placeholder["Sources for More Information"]}
           className="w-full text-[#4626ff] resize-none placeholder-[#4726ff9d] bg-transparent min-h-[100px] outline-none "
         />
       </div>

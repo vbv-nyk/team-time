@@ -67,7 +67,17 @@ export const counterSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { updateName, updateDesc, updateReqs, updateImg, updateTitle } =
-  counterSlice.actions;
+export const {
+  updateName,
+  updateDesc,
+  updateReqs,
+  updateImg,
+  updateTitle,
+  updateAchieveReq,
+  updateContactReq,
+  updateFrontPost,
+  updateMainPost,
+  updateSources,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;
