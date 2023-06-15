@@ -11,17 +11,19 @@ export default function Avani() {
   );
 
   return (
-    <div className="flex flex-col gap-5 bg-[#e6f0e8] rounded-lg p-10">
+    <div className="flex flex-col gap-8 p-10 rounded-lg bg-avani-background">
       <div className="flex flex-col items-center gap-1">
-        <div className="text-4xl  text-[#4626ff] font-bold">{name}</div>
-        <div className="flex flex-col font-medium">
-          <div className="text-2xl text-[#800000] text-center">{title}</div>
-          <div className="self-end text-xs text-[#592121] font-light">
-            By {createdBy}
+        <div className="text-3xl font-bold text-center text-avani-lheader">
+          {name}
+        </div>
+        <div className="flex flex-col gap-2 font-medium">
+          <div className="text-2xl text-center text-avani-mheader">{title}</div>
+          <div className="self-end text-xs font-light text-avani-paragraph">
+            By {createdBy || "Vaibhav Nayak"}
           </div>
         </div>
       </div>
-      <div className="flex justify-center w-full">
+      <div className="flex flex-col items-center grid-cols-3 gap-8 lg:grid">
         <Image
           src={
             img ||
@@ -29,27 +31,42 @@ export default function Avani() {
           }
           height={2000}
           width={2000}
-          className="max-w-[300px] min-w-[250px]"
+          className="col-start-1 "
           alt="Image describing project"
+        />
+        <div className="flex flex-col w-full col-start-2 col-end-4 gap-4">
+          <h1 className="text-lg font-medium text-avani-mheader ">
+            What We&apos;re Trying To Achieve
+          </h1>
+          <textarea
+            className="bg-transparent border-none min-h-[100px] outline-none rounded-sm text-[#4626ff] resize-none placeholder-[#4726ff9d]"
+            placeholder={
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+            }
+          />
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-lg font-medium text-avani-mheader ">
+          How To Contact Us
+        </h1>
+        <textarea
+          placeholder={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+          }
+          className="w-full text-[#4626ff] resize-none placeholder-[#4726ff9d]  bg-transparent min-h-[100px] outline-none "
         />
       </div>
       <div className="flex flex-col gap-4">
-        <h1 className="text-lg text-[#592121]  font-medium ">
-          What We&apos;re Trying To Achieve
-        </h1>
-        <textarea className="w-full p-4 bg-transparent border-b-black border-2 min-h-[100px] outline-none rounded-sm" />
-      </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="text-lg text-[#592121] font-medium ">
-          How To Contact Us
-        </h1>
-        <textarea className="w-full p-4 bg-transparent border-b-black border-2 min-h-[100px] outline-none " />
-      </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="text-lg text-[#592121] font-medium ">
+        <h1 className="text-lg font-medium text-avani-mheader ">
           Sources for More Information
         </h1>
-        <textarea className="w-full p-4 bg-transparent border-b-black border-2 min-h-[100px] outline-none " />
+        <textarea
+          placeholder={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+          }
+          className="w-full text-[#4626ff] resize-none placeholder-[#4726ff9d] bg-transparent min-h-[100px] outline-none "
+        />
       </div>
     </div>
   );

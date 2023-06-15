@@ -92,7 +92,7 @@ export default function TeamCard(props: teamCardInterface) {
             }
             height={1000}
             width={1000}
-            className="w-full h-full min-w-[300px]"
+            className="w-full h-full min-w-[400px]"
             alt="Image For Your Project/Team"
           />
         </Link>
