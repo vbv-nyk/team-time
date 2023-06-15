@@ -10,52 +10,21 @@ import {
   updateReqDesc,
   updateSources,
 } from "@/app/redux/teamSlice";
+import Requirements from "../Common/requirements";
+import TeamCreatedBy from "../Common/teamCreatedBy";
+import { loremIpsum } from "@/app/services/constants";
+import HeaderTextArea from "../Common/headerTextArea";
 
 export default function Avani() {
-  const { name, title, createdBy, img, reqs, placeholder } = useSelector(
+  const { img, placeholder } = useSelector(
     (state: RootState) => state.teamSlice
   );
-  function capitaliseReq(reqName: string) {
-    return reqName
-      .split(" ")
-      .map(
-        (reqSubName) => reqSubName[0].toUpperCase() + reqSubName.substring(1)
-      )
-      .join(" ");
-  }
-  const dispatch = useDispatch();
 
-  const reqSection = reqs.map((req) => (
-    <div key={req.name} className="flex flex-col gap-1">
-      <div className="font-bold text-avani-paragraph">
-        {capitaliseReq(req.name)}
-      </div>
-      <textarea
-        className="bg-transparent border-none min-h-[100px] outline-none rounded-sm text-[#4626ff] w-full resize-none placeholder-[#4726ff9d]"
-        placeholder={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-        }
-        onChange={(e) =>
-          dispatch(updateReqDesc({ name: req.name, desc: e.target.value }))
-        }
-        value={req.desc}
-      />
-    </div>
-  ));
+  const dispatch = useDispatch();
 
   return (
     <div className="flex flex-col gap-8 p-1 rounded-lg sm:p-4 bg-avani-background">
-      <div className="flex flex-col items-center gap-1">
-        <div className="text-3xl font-bold text-center text-avani-lheader">
-          {name}
-        </div>
-        <div className="flex flex-col gap-2 font-medium">
-          <div className="text-2xl text-center text-avani-mheader">{title}</div>
-          <div className="self-end text-xs font-light text-avani-paragraph">
-            By {createdBy || "Vaibhav Nayak"}
-          </div>
-        </div>
-      </div>
+      <TeamCreatedBy />
       <div className="flex flex-col items-center grid-cols-3 gap-8 lg:grid">
         <Image
           src={
@@ -67,51 +36,27 @@ export default function Avani() {
           className="col-start-1 "
           alt="Image describing project"
         />
-        <div className="flex flex-col w-full col-start-2 col-end-4 gap-4">
-          <h1 className="text-xl font-medium text-avani-mheader ">
-            What We&apos;re Trying To Achieve
-          </h1>
-          <textarea
-            className="bg-transparent border-none min-h-[100px] outline-none rounded-sm text-[#4626ff] resize-none placeholder-[#4726ff9d]"
-            placeholder={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-            }
-            onChange={(e) => dispatch(updateAchieveReq(e.target.value))}
-            value={placeholder["What Are We Trying To Achieve"]}
-          />
-        </div>
-      </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="text-xl font-medium text-avani-mheader ">
-          How To Contact Us
-        </h1>
-        <textarea
-          placeholder={
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-          }
-          value={placeholder["How To Contact Us"]}
-          onChange={(e) => dispatch(updateContactReq(e.target.value))}
-          className="w-full text-[#4626ff] resize-none placeholder-[#4726ff9d]  bg-transparent min-h-[100px] outline-none "
+        <HeaderTextArea
+          header="What We're Trying To Achieve"
+          onChangeFunction={updateAchieveReq}
         />
       </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="text-xl font-medium text-avani-mheader ">
-          Sources for More Information
-        </h1>
-        <textarea
-          placeholder={
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-          }
-          onChange={(e) => dispatch(updateSources(e.target.value))}
-          value={placeholder["Sources for More Information"]}
-          className="w-full text-[#4626ff] resize-none placeholder-[#4726ff9d] bg-transparent min-h-[100px] outline-none "
-        />
-      </div>
+
+      <HeaderTextArea
+        header="How To Contact Us"
+        onChangeFunction={updateContactReq}
+      />
+      <HeaderTextArea
+        header="Sources for More Information"
+        onChangeFunction={updateSources}
+      />
       <div className="flex flex-col gap-6">
         <h1 className="text-xl font-medium text-avani-mheader ">
           What We Want From Our Teammates
         </h1>
-        <div className="flex flex-col gap-4">{reqSection}</div>
+        <div className="flex flex-col gap-4">
+          <Requirements nameColor="#4626ff" paragraphColor="#592121" />
+        </div>
       </div>
     </div>
   );

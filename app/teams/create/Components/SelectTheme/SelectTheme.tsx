@@ -44,15 +44,15 @@ export default function SelectTheme(props: { setStep: Function }) {
 
   return (
     <div className="flex flex-col gap-2 md:grid md:grid-cols-4">
-      <div className="flex gap-5 py-5 rounded-lg bg-slate-50 md:flex-col">
+      <div className="flex row-span-2 gap-5 py-5 rounded-lg bg-slate-50 md:flex-col">
         {Object.values(ThemeOption).map((theme) => (
           <div key={theme} onClick={() => setTheme(theme)}>
             {theme}
           </div>
         ))}
       </div>
-      <div className="col-span-3">{ThemeSelect(selectedTheme)}</div>
-      <div className="flex flex-col items-center col-start-2 col-end-4 gap-4 p-6 bg-white">
+      <div className="col-span-3 ">{ThemeSelect(selectedTheme)}</div>
+      <div className="flex flex-col items-center col-start-2 col-end-5 gap-4 p-6 bg-white">
         {/* <ElementsPanel /> */}
         <ThemeControls setStep={props.setStep} />
       </div>

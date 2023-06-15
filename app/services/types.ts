@@ -30,8 +30,14 @@ export interface teamsInterface {
   teams: teamInterface[];
 }
 
+export interface requirementsColors {
+  nameColor: string;
+  paragraphColor: string;
+}
+
 export interface placeholderInterface {
   "What Are We Trying To Achieve": string;
   "How To Contact Us": string;
   "Sources for More Information": string;
+  [key: string]: string;
 }
