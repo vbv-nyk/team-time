@@ -1,48 +1,57 @@
-import { teamInterface } from "@/app/services/types";
 import { useState } from "react";
 import Avani from "./Templates/AVANI/Avani";
 import ElementsPanel from "./ElementsPanel";
 import ThemeControls from "./ThemeControls";
-import { useSelector } from "react-redux";
-import { RootState } from "@/app/redux/store";
+import Clean from "./Templates/CLEAN/Clean";
 
-// interface posterInterface extends teamInterface {
-//   images: [string];
-// }
+enum ThemeOption {
+  CLEAN = "CLEAN",
+  AVANI = "AVANI",
+  WINI = "WINI",
+  SIRI = "SIRI",
+  ADHYA = "ADHYA",
+}
 
 export default function SelectTheme(props: { setStep: Function }) {
-  //create elements common to all themes
-  //use redux toolkit to share them across these elements
-  const { img } = useSelector((store: RootState) => store.teamSlice);
-
-  enum themeNames {
-    AVANI,
-    WINI,
-    SIRI,
-    ADHYA,
-  }
-  const [type, setType] = useState(themeNames.AVANI);
-  const themeOptions = Object.keys(themeNames).filter((theme) =>
-    isNaN(Number(theme))
+  const [selectedTheme, setSelectedTheme] = useState<ThemeOption>(
+    ThemeOption.AVANI
   );
-  const themeOptionsJSX = themeOptions.map((themeOption, index) => {
-    return <div key={index}>{themeOption}</div>;
-  });
 
-  function ThemeSelect(type: themeNames) {
-    switch (type) {
-      case themeNames.AVANI:
+  function setTheme(theme: ThemeOption) {
+    setSelectedTheme(theme);
+  }
+
+  function ThemeSelect(theme: ThemeOption) {
+    switch (theme) {
+      case ThemeOption.AVANI:
         return <Avani />;
+      case ThemeOption.WINI:
+        // Render the component for WINI theme
+        break;
+      case ThemeOption.SIRI:
+        // Render the component for SIRI theme
+        break;
+      case ThemeOption.ADHYA:
+        // Render the component for ADHYA theme
+        break;
+      case ThemeOption.CLEAN:
+        return <Clean />;
+        break;
+      default:
+        return null;
     }
   }
 
   return (
-    <div className="flex flex-col gap-2 md:grid md:grid-cols-3">
+    <div className="flex flex-col gap-2 md:grid md:grid-cols-4">
       <div className="flex gap-5 py-5 rounded-lg bg-slate-50 md:flex-col">
-        {themeOptionsJSX}
+        {Object.values(ThemeOption).map((theme) => (
+          <div key={theme} onClick={() => setTheme(theme)}>
+            {theme}
+          </div>
+        ))}
       </div>
-      <div className="col-span-2">{ThemeSelect(type)}</div>
-
+      <div className="col-span-3">{ThemeSelect(selectedTheme)}</div>
       <div className="flex flex-col items-center col-start-2 col-end-4 gap-4 p-6 bg-white">
         {/* <ElementsPanel /> */}
         <ThemeControls setStep={props.setStep} />

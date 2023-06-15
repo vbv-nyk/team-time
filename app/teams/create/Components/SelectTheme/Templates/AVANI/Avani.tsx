@@ -24,6 +24,7 @@ export default function Avani() {
       .join(" ");
   }
   const dispatch = useDispatch();
+
   const reqSection = reqs.map((req) => (
     <div key={req.name} className="flex flex-col gap-1">
       <div className="font-bold text-avani-paragraph">
