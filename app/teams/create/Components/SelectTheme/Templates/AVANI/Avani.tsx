@@ -25,7 +25,7 @@ export default function Avani() {
   }
   const dispatch = useDispatch();
   const reqSection = reqs.map((req) => (
-    <div key={req.name} className="flex flex-col gap-2">
+    <div key={req.name} className="flex flex-col gap-1">
       <div className="font-bold text-avani-paragraph">
         {capitaliseReq(req.name)}
       </div>
@@ -106,11 +106,11 @@ export default function Avani() {
           className="w-full text-[#4626ff] resize-none placeholder-[#4726ff9d] bg-transparent min-h-[100px] outline-none "
         />
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-6">
         <h1 className="text-xl font-medium text-avani-mheader ">
           What We Want From Our Teammates
         </h1>
-        <div>{reqSection}</div>
+        <div className="flex flex-col gap-4">{reqSection}</div>
       </div>
     </div>
   );

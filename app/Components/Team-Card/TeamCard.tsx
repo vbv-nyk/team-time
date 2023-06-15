@@ -57,7 +57,7 @@ export default function TeamCard(props: teamCardInterface) {
   return (
     <div
       style={containerStyle}
-      className="flex flex-col items-center gap-4 py-2 break-all shadow-sm h-max shadow-neutral-600"
+      className="flex flex-col sm:w-[400px] items-center gap-4 py-2 break-all shadow-sm h-max shadow-neutral-600"
     >
       <div className="flex items-center gap-2 text-sm">
         <h1 className="font-semibold">{name}: </h1>
@@ -92,7 +92,7 @@ export default function TeamCard(props: teamCardInterface) {
             }
             height={1000}
             width={1000}
-            className="h-full sm:w-[400px] "
+            className="h-full "
             alt="Image For Your Project/Team"
           />
         </Link>

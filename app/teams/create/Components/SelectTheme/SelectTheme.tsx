@@ -17,7 +17,7 @@ export default function SelectTheme(props: { setStep: Function }) {
 
   enum themeNames {
     AVANI,
-    ASHI,
+    WINI,
     SIRI,
     ADHYA,
   }
