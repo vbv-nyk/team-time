@@ -8,7 +8,7 @@ import TagsComponent from "./Components/TagComponents/tagsComponent";
 import SelectTheme from "./Components/SelectTheme/SelectTheme";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
-import { updateName, updateReqs, updateTitle } from "@/app/redux/teamSlice";
+import { updateName, updateTitle } from "@/app/redux/teamSlice";
 
 export default function Page() {
   const { name, title, reqs, placeholder, desc, createdBy, img } = useSelector(
@@ -29,7 +29,7 @@ export default function Page() {
           <form className="flex flex-col items-start gap-4 p-2 grow-0">
             <div className="text-lg font-light">Enter Team Details</div>
             <div className="flex flex-wrap items-center justify-start gap-4 sm:justify-normal ">
-              <div className="flex items-center gap-3 ">
+              <div className="flex flex-wrap items-center gap-3 ">
                 <label
                   htmlFor="team-name"
                   className="text-xs font-semibold w-max"
@@ -45,10 +45,10 @@ export default function Page() {
                   className="bg-transparent border-b outline-none border-b-black"
                 />
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <label
                   htmlFor="team-title"
-                  className="w-full text-xs font-semibold whitespace-nowrap"
+                  className="text-xs font-semibold whitespace-nowrap"
                 >
                   Display Title
                 </label>

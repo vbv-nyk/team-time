@@ -25,7 +25,6 @@ export default function SelectTheme(props: { setStep: Function }) {
   const themeOptions = Object.keys(themeNames).filter((theme) =>
     isNaN(Number(theme))
   );
-  console.log(themeNames);
   const themeOptionsJSX = themeOptions.map((themeOption, index) => {
     return <div key={index}>{themeOption}</div>;
   });

@@ -4,9 +4,13 @@ export interface teamInterface {
   img: string;
   title: string;
   createdBy: string;
-  reqs: string[];
+  reqs: reqInterface[];
   placeholder: placeholderInterface;
   id: string;
+}
+export interface reqInterface {
+  name: string;
+  desc: string;
 }
 
 export interface frontPostInterface {
@@ -14,7 +18,7 @@ export interface frontPostInterface {
   img: string;
   title: string;
   createdBy: string;
-  reqs: string[];
+  reqs: reqInterface;
 }
 
 export interface mainPostInterface extends frontPostInterface {

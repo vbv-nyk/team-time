@@ -7,6 +7,7 @@ import { RootState } from "@/app/redux/store";
 import {
   updateAchieveReq,
   updateContactReq,
+  updateReqDesc,
   updateSources,
 } from "@/app/redux/teamSlice";
 
@@ -14,7 +15,32 @@ export default function Avani() {
   const { name, title, createdBy, img, reqs, placeholder } = useSelector(
     (state: RootState) => state.teamSlice
   );
+  function capitaliseReq(reqName: string) {
+    return reqName
+      .split(" ")
+      .map(
+        (reqSubName) => reqSubName[0].toUpperCase() + reqSubName.substring(1)
+      )
+      .join(" ");
+  }
   const dispatch = useDispatch();
+  const reqSection = reqs.map((req) => (
+    <div key={req.name} className="flex flex-col gap-2">
+      <div className="font-bold text-avani-paragraph">
+        {capitaliseReq(req.name)}
+      </div>
+      <textarea
+        className="bg-transparent border-none min-h-[100px] outline-none rounded-sm text-[#4626ff] w-full resize-none placeholder-[#4726ff9d]"
+        placeholder={
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        }
+        onChange={(e) =>
+          dispatch(updateReqDesc({ name: req.name, desc: e.target.value }))
+        }
+        value={req.desc}
+      />
+    </div>
+  ));
 
   return (
     <div className="flex flex-col gap-8 p-1 rounded-lg sm:p-4 bg-avani-background">
@@ -41,7 +67,7 @@ export default function Avani() {
           alt="Image describing project"
         />
         <div className="flex flex-col w-full col-start-2 col-end-4 gap-4">
-          <h1 className="text-lg font-medium text-avani-mheader ">
+          <h1 className="text-xl font-medium text-avani-mheader ">
             What We&apos;re Trying To Achieve
           </h1>
           <textarea
@@ -55,7 +81,7 @@ export default function Avani() {
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        <h1 className="text-lg font-medium text-avani-mheader ">
+        <h1 className="text-xl font-medium text-avani-mheader ">
           How To Contact Us
         </h1>
         <textarea
@@ -68,7 +94,7 @@ export default function Avani() {
         />
       </div>
       <div className="flex flex-col gap-4">
-        <h1 className="text-lg font-medium text-avani-mheader ">
+        <h1 className="text-xl font-medium text-avani-mheader ">
           Sources for More Information
         </h1>
         <textarea
@@ -79,6 +105,12 @@ export default function Avani() {
           value={placeholder["Sources for More Information"]}
           className="w-full text-[#4626ff] resize-none placeholder-[#4726ff9d] bg-transparent min-h-[100px] outline-none "
         />
+      </div>
+      <div className="flex flex-col gap-3">
+        <h1 className="text-xl font-medium text-avani-mheader ">
+          What We Want From Our Teammates
+        </h1>
+        <div>{reqSection}</div>
       </div>
     </div>
   );

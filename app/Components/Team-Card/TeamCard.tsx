@@ -50,7 +50,7 @@ export default function TeamCard(props: teamCardInterface) {
 
   const tags = reqs.map((req, i) => (
     <div key={i} className="px-3 py-1 bg-blue-800 rounded-full">
-      {req}
+      {req.name}
     </div>
   ));
 
@@ -82,7 +82,7 @@ export default function TeamCard(props: teamCardInterface) {
           />
         </label>
       )}
-      <div>
+      <div className="w-full shrink-0 sm:w-[400px]">
         <Link href={`/teams/${name}`}>
           <Image
             // src={imageSrc.toString()}
@@ -92,7 +92,7 @@ export default function TeamCard(props: teamCardInterface) {
             }
             height={1000}
             width={1000}
-            className="w-full h-full min-w-[400px]"
+            className="h-full sm:w-[400px] "
             alt="Image For Your Project/Team"
           />
         </Link>

@@ -38,21 +38,23 @@ export const counterSlice = createSlice({
     updateDesc: (state, action: PayloadAction<string>) => {
       state.desc = action.payload;
     },
-    updateReqs: (state, action: PayloadAction<string[]>) => {
-      state.reqs = action.payload;
+    removeReq: (state, action: PayloadAction<number>) => {
+      state.reqs = state.reqs.filter((req, i) => i != action.payload);
+    },
+    updateReqName: (state, action: PayloadAction<string>) => {
+      state.reqs.push({ name: action.payload, desc: "" });
+    },
+    updateReqDesc: (
+      state,
+      action: PayloadAction<{ name: string; desc: string }>
+    ) => {
+      const reqIndex = state.reqs.findIndex(
+        (req) => req.name == action.payload.name
+      );
+      state.reqs[reqIndex].desc = action.payload.desc;
     },
     updateImg: (state, action: PayloadAction<string>) => {
       state.img = action.payload;
-    },
-    updateFrontPost: (state, action: PayloadAction<frontPostInterface>) => {
-      state.img = action.payload.img;
-      state.title = action.payload.title;
-      state.reqs = action.payload.reqs;
-      state.name = action.payload.name;
-    },
-    updateMainPost: (state, action: PayloadAction<mainPostInterface>) => {
-      state.desc = action.payload.desc;
-      state.placeholder = action.payload.placeholder;
     },
     updateAchieveReq: (state, action: PayloadAction<string>) => {
       state.placeholder["What Are We Trying To Achieve"] = action.payload;
@@ -70,14 +72,14 @@ export const counterSlice = createSlice({
 export const {
   updateName,
   updateDesc,
-  updateReqs,
   updateImg,
   updateTitle,
+  updateReqName,
+  updateReqDesc,
   updateAchieveReq,
   updateContactReq,
-  updateFrontPost,
-  updateMainPost,
   updateSources,
+  removeReq,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

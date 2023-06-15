@@ -1,5 +1,5 @@
 import { RootState } from "@/app/redux/store";
-import teamSlice, { updateReqs } from "@/app/redux/teamSlice";
+import teamSlice, { updateReqName } from "@/app/redux/teamSlice";
 import { FormEvent, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,14 +14,14 @@ export default function TagsComponent() {
     console.log(tagFieldRef);
     if (tagFieldRef.current?.value) {
       const tagFieldValue = tagFieldRef.current.value.toLowerCase();
-      if (!reqs.includes(tagFieldValue))
-        dispatch(updateReqs([...reqs, tagFieldValue]));
+      if (reqs.findIndex((req) => req.name === tagFieldValue) == -1)
+        dispatch(updateReqName(tagFieldValue));
       tagFieldRef.current.value = "";
     }
   }
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-wrap items-center gap-4">
       <label htmlFor="team-reqs" className="text-xs font-semibold w-max">
         Add Tags
       </label>
