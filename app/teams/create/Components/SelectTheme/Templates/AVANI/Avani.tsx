@@ -2,13 +2,15 @@ import { teamInterface } from "@/app/services/types";
 import Image from "next/image";
 import ElementsPanel from "../../ElementsPanel";
 import ThemeControls from "../../ThemeControls";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
 
 export default function Avani() {
   const { name, title, createdBy, img, reqs, placeholder } = useSelector(
     (state: RootState) => state.teamSlice
   );
+  const dispatch = useDispatch();
+
   return (
     <div className="flex flex-col gap-8 p-1 rounded-lg sm:p-4 bg-avani-background">
       <div className="flex flex-col items-center gap-1">
@@ -42,6 +44,8 @@ export default function Avani() {
             placeholder={
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
             }
+            // onChange={(e)=>dispatch()}
+            value={placeholder["What Are We Trying To Achieve"]}
           />
         </div>
       </div>
@@ -53,6 +57,7 @@ export default function Avani() {
           placeholder={
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           }
+          value={placeholder["How To Contact Us"]}
           className="w-full text-[#4626ff] resize-none placeholder-[#4726ff9d]  bg-transparent min-h-[100px] outline-none "
         />
       </div>
@@ -64,6 +69,7 @@ export default function Avani() {
           placeholder={
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           }
+          value={placeholder["How To Contact Us"]}
           className="w-full text-[#4626ff] resize-none placeholder-[#4726ff9d] bg-transparent min-h-[100px] outline-none "
         />
       </div>

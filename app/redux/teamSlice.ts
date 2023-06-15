@@ -54,6 +54,15 @@ export const counterSlice = createSlice({
       state.desc = action.payload.desc;
       state.placeholder = action.payload.placeholder;
     },
+    updateAchieveReq: (state, action: PayloadAction<string>) => {
+      state.placeholder["What Are We Trying To Achieve"] = action.payload;
+    },
+    updateContactReq: (state, action: PayloadAction<string>) => {
+      state.placeholder["How To Contact Us"] = action.payload;
+    },
+    updateSources: (state, action: PayloadAction<string>) => {
+      state.placeholder["Sources for More Information"] = action.payload;
+    },
   },
 });
 
