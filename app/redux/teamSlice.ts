@@ -7,11 +7,7 @@ import {
   teamInterface,
 } from "../services/types";
 
-const placeholder: placeholderInterface = {
-  "What Are We Trying To Achieve": "",
-  "How To Contact Us": "",
-  "Sources for More Information": "",
-};
+const placeholder: placeholderInterface = {};
 
 const initialState: teamInterface = {
   name: "",

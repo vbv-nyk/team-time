@@ -23,10 +23,13 @@ export default function TeamCreatedBy(props: teamCreatedByInterface) {
 
   return (
     <div className="flex flex-col items-center gap-1">
-      <div style={teamNameStyle} className="text-3xl font-bold text-center">
+      <div
+        style={teamNameStyle}
+        className="text-3xl font-bold tracking-wide text-center"
+      >
         {name}
       </div>
-      <div className="flex flex-col gap-2 font-medium">
+      <div className="flex flex-col gap-2 font-medium tracking-wide">
         <div className="text-2xl text-center" style={titleStyle}>
           {title}
         </div>

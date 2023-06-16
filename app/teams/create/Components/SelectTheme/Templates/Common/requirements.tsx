@@ -27,11 +27,11 @@ export default function Requirements(props: requirementsColors) {
 
   const reqSection = reqs.map((req) => (
     <div key={req.name} className="flex flex-col gap-1">
-      <div style={reqNameStyle} className="font-semibold">
+      <div style={reqNameStyle} className="font-semibold tracking-wider">
         {capitaliseReq(req.name)}
       </div>
       <textarea
-        className="bg-transparent border-none min-h-[100px] outline-none rounded-sm w-full resize-none "
+        className="bg-transparent border-none min-h-[100px] outline-none rounded-sm w-full resize-none tracking-wide"
         style={reqDescStyle}
         placeholder={loremIpsum}
         onChange={(e) =>

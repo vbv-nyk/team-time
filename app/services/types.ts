@@ -57,3 +57,11 @@ export enum sectionTypes {
 export interface placeholderInterface {
   [key: string]: string;
 }
+
+export enum ThemeOption {
+  CLEAN = "CLEAN",
+  AVANI = "AVANI",
+  DARK = "DARK",
+  SIRI = "SIRI",
+  ADHYA = "ADHYA",
+}

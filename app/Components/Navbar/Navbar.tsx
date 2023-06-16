@@ -1,11 +1,20 @@
 import Link from "next/link";
 
-export default function Navbar() {
+interface navbarInterface {
+  backgroundColor?: string;
+}
+
+export default function Navbar(props: navbarInterface) {
   return (
-    <div className="flex items-center justify-between py-2 shadow-sm">
-      <h1 id="Logo" className="font-bold text-md">
-        Team Time
-      </h1>
+    <div
+      style={{ backgroundColor: props.backgroundColor }}
+      className="flex items-center justify-between py-2 shadow-sm"
+    >
+      <Link href="/" id="teams">
+        <h1 id="Logo" className="font-bold text-md">
+          Team Time
+        </h1>
+      </Link>
       <div className="flex items-center gap-2 text-sm">
         <a href="#" id="about">
           About

@@ -15,12 +15,12 @@ export default function HeaderTextArea(props: headerTextAreaInterface) {
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col w-full gap-4">
-      <h1 style={headerStyle} className="text-xl font-bold ">
+      <h1 style={headerStyle} className="text-xl font-bold tracking-wider ">
         {header}
       </h1>
       <textarea
         style={paragraphStyle}
-        className="bg-transparent border-none min-h-[80px]  outline-none rounded-sm text-[#4626ff] h-max resize-none "
+        className="bg-transparent border-none min-h-[80px]  outline-none rounded-sm text-[#4626ff] h-max tracking-wide resize-none "
         placeholder={loremIpsum}
         onChange={(e) => dispatch(onChangeFunction(e.target.value))}
         value={placeholder[header]}
