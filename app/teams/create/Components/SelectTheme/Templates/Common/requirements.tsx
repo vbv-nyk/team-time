@@ -27,7 +27,7 @@ export default function Requirements(props: requirementsColors) {
 
   const reqSection = reqs.map((req) => (
     <div key={req.name} className="flex flex-col gap-1">
-      <div style={reqNameStyle} className="font-bold">
+      <div style={reqNameStyle} className="font-semibold">
         {capitaliseReq(req.name)}
       </div>
       <textarea
@@ -41,5 +41,9 @@ export default function Requirements(props: requirementsColors) {
       />
     </div>
   ));
-  return <>{reqSection}</>;
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">{reqSection}</div>
+    </div>
+  );
 }

@@ -1,8 +1,7 @@
 "use client";
 import Navbar from "@/app/Components/Navbar/Navbar";
 import TeamCard from "@/app/Components/Team-Card/TeamCard";
-import { useMutation } from "@apollo/client";
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useState } from "react";
 import AddedTags from "./Components/TagComponents/addedTags";
 import TagsComponent from "./Components/TagComponents/tagsComponent";
 import SelectTheme from "./Components/SelectTheme/SelectTheme";
@@ -11,9 +10,7 @@ import { RootState } from "@/app/redux/store";
 import { updateName, updateTitle } from "@/app/redux/teamSlice";
 
 export default function Page() {
-  const { name, title, reqs, placeholder, desc, createdBy, img } = useSelector(
-    (state: RootState) => state.teamSlice
-  );
+  const { name, title } = useSelector((state: RootState) => state.teamSlice);
   const dispatch = useDispatch();
   const [step, setStep] = useState(1);
 

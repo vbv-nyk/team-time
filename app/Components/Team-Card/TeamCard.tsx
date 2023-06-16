@@ -1,11 +1,9 @@
-import { teamInterface } from "@/app/services/types";
 import Image from "next/image";
-import { FormEvent, useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import { ChangeEvent, CSSProperties } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
-import { updateImg } from "@/app/redux/teamSlice";
 
 interface teamCardInterface {
   viewStyle: string;

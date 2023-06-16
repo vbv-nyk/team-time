@@ -1,6 +1,5 @@
 import { RootState } from "@/app/redux/store";
-import { useDispatch, useSelector } from "react-redux";
-import { avaniColors } from "../../../../../../services/colors";
+import { useSelector } from "react-redux";
 import { teamCreatedByInterface } from "@/app/services/types";
 
 export default function TeamCreatedBy(props: teamCreatedByInterface) {
@@ -31,7 +30,7 @@ export default function TeamCreatedBy(props: teamCreatedByInterface) {
         <div className="text-2xl text-center" style={titleStyle}>
           {title}
         </div>
-        <div style={createdByStyle} className="self-end text-xs font-light">
+        <div style={createdByStyle} className="self-end text-xs font-semibold">
           By {createdBy || "Vaibhav Nayak"}
         </div>
       </div>

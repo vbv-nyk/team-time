@@ -2,8 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
 import {
-  frontPostInterface,
-  mainPostInterface,
   placeholderInterface,
   sectionTypes,
   teamInterface,

@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 export default function ElementsPanel() {
   function paragraphOptions() {}

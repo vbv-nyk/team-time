@@ -1,20 +1,20 @@
 import { useState } from "react";
 import Avani from "./Templates/AVANI/Avani";
-import ElementsPanel from "./ElementsPanel";
 import ThemeControls from "./ThemeControls";
 import Clean from "./Templates/CLEAN/Clean";
+import Dark from "./Templates/DARK/Dark";
 
 enum ThemeOption {
   CLEAN = "CLEAN",
   AVANI = "AVANI",
-  WINI = "WINI",
+  DARK = "DARK",
   SIRI = "SIRI",
   ADHYA = "ADHYA",
 }
 
 export default function SelectTheme(props: { setStep: Function }) {
   const [selectedTheme, setSelectedTheme] = useState<ThemeOption>(
-    ThemeOption.AVANI
+    ThemeOption.CLEAN
   );
 
   function setTheme(theme: ThemeOption) {
@@ -25,7 +25,8 @@ export default function SelectTheme(props: { setStep: Function }) {
     switch (theme) {
       case ThemeOption.AVANI:
         return <Avani />;
-      case ThemeOption.WINI:
+      case ThemeOption.DARK:
+        return <Dark />;
         // Render the component for WINI theme
         break;
       case ThemeOption.SIRI:

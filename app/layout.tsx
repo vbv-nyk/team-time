@@ -1,12 +1,7 @@
 "use client";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  gql,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 import { Provider } from "react-redux";
 import { store } from "./redux/store";

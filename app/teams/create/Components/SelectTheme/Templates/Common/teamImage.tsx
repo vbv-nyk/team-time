@@ -1,13 +1,12 @@
 import { RootState } from "@/app/redux/store";
 import Image from "next/image";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function TeamImage() {
   const { img } = useSelector((state: RootState) => state.teamSlice);
-  const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="flex items-center justify-center">
       <Image
         src={
           img ||
@@ -15,7 +14,7 @@ export default function TeamImage() {
         }
         height={2000}
         width={2000}
-        className="col-start-1 "
+        className="w-full sm:w-[300px]"
         alt="Image describing project"
       />
     </div>

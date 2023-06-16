@@ -1,5 +1,5 @@
 import { RootState } from "@/app/redux/store";
-import teamSlice, { updateReqName } from "@/app/redux/teamSlice";
+import { updateReqName } from "@/app/redux/teamSlice";
 import { FormEvent, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 

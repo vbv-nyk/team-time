@@ -1,4 +1,4 @@
-import { sectionTypes, teamInterface } from "@/app/services/types";
+import { sectionTypes } from "@/app/services/types";
 import {
   updateAchieveReq,
   updateContactReq,
@@ -14,23 +14,20 @@ export default function Avani() {
   return (
     <div
       style={{ backgroundColor: avaniColors.background }}
-      className="flex flex-col gap-8 p-1 rounded-lg sm:p-4 "
+      className="flex flex-col gap-2 p-2"
     >
       <TeamCreatedBy
-        createdByColor={avaniColors.mediumHeader}
         teamNameColor={avaniColors.largeHeader}
+        createdByColor={avaniColors.smallHeader}
         titleColor={avaniColors.mediumHeader}
       />
-      <div className="flex flex-col items-center grid-cols-3 gap-8 lg:grid">
-        <TeamImage />
-        <HeaderTextArea
-          header={sectionTypes.ABOUT}
-          onChangeFunction={updateAchieveReq}
-          headerColor={avaniColors.mediumHeader}
-          paragraphColor={avaniColors.paragraph}
-        />
-      </div>
-
+      <TeamImage />
+      <HeaderTextArea
+        header={sectionTypes.ABOUT}
+        onChangeFunction={updateAchieveReq}
+        headerColor={avaniColors.mediumHeader}
+        paragraphColor={avaniColors.paragraph}
+      />
       <HeaderTextArea
         header={sectionTypes.CONTACT}
         onChangeFunction={updateContactReq}
@@ -43,19 +40,18 @@ export default function Avani() {
         headerColor={avaniColors.mediumHeader}
         paragraphColor={avaniColors.paragraph}
       />
-      <div className="flex flex-col gap-6">
-        <h1
-          style={{ color: avaniColors.largeHeader }}
-          className="text-xl font-medium text-avani-mheader "
+
+      <div className="flex flex-col gap-3">
+        <div
+          style={{ color: avaniColors.mediumHeader }}
+          className="text-xl font-extrabold"
         >
-          What We Want From Our Teammates
-        </h1>
-        <div className="flex flex-col gap-4">
-          <Requirements
-            reqNameColor={avaniColors.mediumHeader}
-            reqDescColor={avaniColors.paragraph}
-          />
+          What We&apos;re Looking For In Our Teammates
         </div>
+        <Requirements
+          reqDescColor={avaniColors.paragraph}
+          reqNameColor={avaniColors.smallHeader}
+        />
       </div>
     </div>
   );
