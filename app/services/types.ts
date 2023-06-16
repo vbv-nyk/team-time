@@ -31,7 +31,20 @@ export interface teamsInterface {
 }
 
 export interface requirementsColors {
-  nameColor: string;
+  reqNameColor: string;
+  reqDescColor: string;
+}
+
+export interface teamCreatedByInterface {
+  teamNameColor: string;
+  createdByColor: string;
+  titleColor: string;
+}
+
+export interface headerTextAreaInterface {
+  header: string;
+  onChangeFunction: Function;
+  headerColor: string;
   paragraphColor: string;
 }
 

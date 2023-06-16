@@ -14,6 +14,7 @@ import Requirements from "../Common/requirements";
 import TeamCreatedBy from "../Common/teamCreatedBy";
 import { loremIpsum } from "@/app/services/constants";
 import HeaderTextArea from "../Common/headerTextArea";
+import { avaniColors } from "./AvaniColors";
 
 export default function Avani() {
   const { img, placeholder } = useSelector(
@@ -24,7 +25,11 @@ export default function Avani() {
 
   return (
     <div className="flex flex-col gap-8 p-1 rounded-lg sm:p-4 bg-avani-background">
-      <TeamCreatedBy />
+      <TeamCreatedBy
+        createdByColor={avaniColors.mediumHeader}
+        teamNameColor={avaniColors.largeHeader}
+        titleColor={avaniColors.mediumHeader}
+      />
       <div className="flex flex-col items-center grid-cols-3 gap-8 lg:grid">
         <Image
           src={
@@ -39,23 +44,35 @@ export default function Avani() {
         <HeaderTextArea
           header="What We're Trying To Achieve"
           onChangeFunction={updateAchieveReq}
+          headerColor={avaniColors.mediumHeader}
+          paragraphColor={avaniColors.paragraph}
         />
       </div>
 
       <HeaderTextArea
         header="How To Contact Us"
         onChangeFunction={updateContactReq}
+        headerColor={avaniColors.mediumHeader}
+        paragraphColor={avaniColors.paragraph}
       />
       <HeaderTextArea
         header="Sources for More Information"
         onChangeFunction={updateSources}
+        headerColor={avaniColors.mediumHeader}
+        paragraphColor={avaniColors.paragraph}
       />
       <div className="flex flex-col gap-6">
-        <h1 className="text-xl font-medium text-avani-mheader ">
+        <h1
+          style={{ color: avaniColors.largeHeader }}
+          className="text-xl font-medium text-avani-mheader "
+        >
           What We Want From Our Teammates
         </h1>
         <div className="flex flex-col gap-4">
-          <Requirements nameColor="#4626ff" paragraphColor="#592121" />
+          <Requirements
+            reqNameColor={avaniColors.mediumHeader}
+            reqDescColor={avaniColors.paragraph}
+          />
         </div>
       </div>
     </div>
