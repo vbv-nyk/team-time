@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Requirements(props: requirementsColors) {
   const { reqs } = useSelector((state: RootState) => state.teamSlice);
+  const { editing } = useSelector((state: RootState) => state.themeSlice);
   const { reqDescColor, reqNameColor } = props;
   function capitaliseReq(reqName: string) {
     return reqName
@@ -30,15 +31,25 @@ export default function Requirements(props: requirementsColors) {
       <div style={reqNameStyle} className="font-semibold tracking-wider">
         {capitaliseReq(req.name)}
       </div>
-      <textarea
-        className="bg-transparent border-none min-h-[100px] outline-none rounded-sm w-full resize-none tracking-wide"
-        style={reqDescStyle}
-        placeholder={loremIpsum}
-        onChange={(e) =>
-          dispatch(updateReqDesc({ name: req.name, desc: e.target.value }))
-        }
-        value={req.desc}
-      />
+      {editing && (
+        <textarea
+          className="bg-transparent border-none min-h-[100px] outline-none rounded-sm w-full resize-none tracking-wide"
+          style={reqDescStyle}
+          placeholder={loremIpsum}
+          onChange={(e) =>
+            dispatch(updateReqDesc({ name: req.name, desc: e.target.value }))
+          }
+          value={req.desc}
+        />
+      )}
+      {!editing && (
+        <p
+          className="bg-transparent border-none min-h-[100px] outline-none rounded-sm w-full resize-none tracking-wide"
+          style={reqDescStyle}
+        >
+          {req.desc}
+        </p>
+      )}
     </div>
   ));
   return (

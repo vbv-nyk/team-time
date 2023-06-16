@@ -8,6 +8,7 @@ import SelectTheme from "./Components/SelectTheme/SelectTheme";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
 import { updateName, updateTitle } from "@/app/redux/teamSlice";
+import { setEditing } from "@/app/redux/themeSlice";
 
 export default function Page() {
   const { name, title } = useSelector((state: RootState) => state.teamSlice);
@@ -68,6 +69,7 @@ export default function Page() {
             <button
               className="px-4 py-2 text-xs font-extrabold text-white bg-green-700 sm:self-end"
               onClick={() => {
+                dispatch(setEditing(true));
                 setStep(2);
               }}
             >

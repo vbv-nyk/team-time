@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function HeaderTextArea(props: headerTextAreaInterface) {
   const { placeholder } = useSelector((state: RootState) => state.teamSlice);
+  const { editing } = useSelector((state: RootState) => state.themeSlice);
   const { header, onChangeFunction, headerColor, paragraphColor } = props;
   const headerStyle = {
     color: headerColor,
@@ -18,13 +19,23 @@ export default function HeaderTextArea(props: headerTextAreaInterface) {
       <h1 style={headerStyle} className="text-xl font-bold tracking-wider ">
         {header}
       </h1>
-      <textarea
-        style={paragraphStyle}
-        className="bg-transparent border-none min-h-[80px]  outline-none rounded-sm text-[#4626ff] h-max tracking-wide resize-none "
-        placeholder={loremIpsum}
-        onChange={(e) => dispatch(onChangeFunction(e.target.value))}
-        value={placeholder[header]}
-      />
+      {editing && (
+        <textarea
+          style={paragraphStyle}
+          className="bg-transparent border-none min-h-[80px]  outline-none rounded-sm text-[#4626ff] h-max tracking-wide resize-none "
+          placeholder={loremIpsum}
+          onChange={(e) => dispatch(onChangeFunction(e.target.value))}
+          value={placeholder[header]}
+        />
+      )}
+      {!editing && (
+        <p
+          style={paragraphStyle}
+          className="bg-transparent border-none min-h-[80px]  outline-none rounded-sm text-[#4626ff] h-max tracking-wide resize-none "
+        >
+          {placeholder[header]}
+        </p>
+      )}
     </div>
   );
 }

@@ -11,6 +11,7 @@ import { RootState } from "@/app/redux/store";
 
 export default function SelectTheme(props: { setStep: Function }) {
   const { currentTheme } = useSelector((state: RootState) => state.themeSlice);
+
   const dispatch = useDispatch();
 
   function ThemeSelect(theme: ThemeOption) {
