@@ -1,6 +1,6 @@
 import { RootState } from "@/app/redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import { avaniColors } from "../AVANI/AvaniColors";
+import { avaniColors } from "../../../../../../services/colors";
 import { teamCreatedByInterface } from "@/app/services/types";
 
 export default function TeamCreatedBy(props: teamCreatedByInterface) {

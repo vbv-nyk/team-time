@@ -21,7 +21,6 @@ export default function Page() {
 
   if (loading) return <div>Loading...</div>;
 
-  console.log(teamsData);
   const teams = teamsData?.teams.map((team: teamInterface) => (
     <TeamCard {...team} key={team.id} viewStyle={viewStyle} isEditing={false} />
   ));

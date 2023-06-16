@@ -2,9 +2,7 @@ import Image from "next/image";
 import { FormEvent, useState } from "react";
 
 export default function ElementsPanel() {
-  function paragraphOptions() {
-    console.log("Hello ");
-  }
+  function paragraphOptions() {}
   const elementsData = [
     {
       elementName: "Paragraph",

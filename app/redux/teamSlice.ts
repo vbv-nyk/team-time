@@ -5,6 +5,7 @@ import {
   frontPostInterface,
   mainPostInterface,
   placeholderInterface,
+  sectionTypes,
   teamInterface,
 } from "../services/types";
 
@@ -57,13 +58,13 @@ export const counterSlice = createSlice({
       state.img = action.payload;
     },
     updateAchieveReq: (state, action: PayloadAction<string>) => {
-      state.placeholder["What Are We Trying To Achieve"] = action.payload;
+      state.placeholder[sectionTypes.ABOUT] = action.payload;
     },
     updateContactReq: (state, action: PayloadAction<string>) => {
-      state.placeholder["How To Contact Us"] = action.payload;
+      state.placeholder[sectionTypes.CONTACT] = action.payload;
     },
     updateSources: (state, action: PayloadAction<string>) => {
-      state.placeholder["Sources for More Information"] = action.payload;
+      state.placeholder[sectionTypes.SOURCES] = action.payload;
     },
   },
 });

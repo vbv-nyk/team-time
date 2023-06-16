@@ -11,7 +11,6 @@ export default function TagsComponent() {
   function addTag(e: FormEvent) {
     e.preventDefault();
     if (reqs.length > 5) return;
-    console.log(tagFieldRef);
     if (tagFieldRef.current?.value) {
       const tagFieldValue = tagFieldRef.current.value.toLowerCase();
       if (reqs.findIndex((req) => req.name === tagFieldValue) == -1)

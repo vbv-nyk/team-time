@@ -1,8 +1,6 @@
 import { RootState } from "@/app/redux/store";
-import { updateAchieveReq } from "@/app/redux/teamSlice";
 import { loremIpsum } from "@/app/services/constants";
 import { headerTextAreaInterface } from "@/app/services/types";
-import { AnyAction } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function HeaderTextArea(props: headerTextAreaInterface) {
@@ -16,7 +14,7 @@ export default function HeaderTextArea(props: headerTextAreaInterface) {
   };
   const dispatch = useDispatch();
   return (
-    <div className="flex flex-col w-full col-start-2 col-end-4 gap-4">
+    <div className="flex flex-col w-full gap-4">
       <h1 style={headerStyle} className="text-xl font-medium ">
         {header}
       </h1>

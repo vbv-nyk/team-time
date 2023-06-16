@@ -48,9 +48,12 @@ export interface headerTextAreaInterface {
   paragraphColor: string;
 }
 
+export enum sectionTypes {
+  ABOUT = "What We're Trying To Achieve",
+  SOURCES = "Sources for More Information",
+  CONTACT = "How To Reach Out To Us",
+}
+
 export interface placeholderInterface {
-  "What Are We Trying To Achieve": string;
-  "How To Contact Us": string;
-  "Sources for More Information": string;
   [key: string]: string;
 }
