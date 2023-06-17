@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { ThemeOption } from "../services/types";
+import { cleanColors, colors } from "../services/colors";
 
 const initialState = {
   currentTheme: ThemeOption.CLEAN,
+  currentThemeColors: cleanColors,
   editing: true,
 };
 
@@ -21,10 +23,14 @@ export const themeSlice = createSlice({
     setTheme: (state, action: PayloadAction<ThemeOption>) => {
       state.currentTheme = action.payload;
     },
+    setCurrentThemeColors: (state, action: PayloadAction<colors>) => {
+      state.currentThemeColors = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setEditing, setTheme } = themeSlice.actions;
+export const { setEditing, setTheme, setCurrentThemeColors } =
+  themeSlice.actions;
 
 export default themeSlice.reducer;

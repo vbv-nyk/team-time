@@ -1,13 +1,15 @@
+import { RootState } from "@/app/redux/store";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
-interface navbarInterface {
-  backgroundColor?: string;
-}
+export default function Navbar() {
+  const { currentThemeColors } = useSelector(
+    (state: RootState) => state.themeSlice
+  );
 
-export default function Navbar(props: navbarInterface) {
   return (
     <div
-      style={{ backgroundColor: props.backgroundColor }}
+      style={{ background: currentThemeColors.background }}
       className="flex items-center justify-between py-2 shadow-sm"
     >
       <Link href="/" id="teams">

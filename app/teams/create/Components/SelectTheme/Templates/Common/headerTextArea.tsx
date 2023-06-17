@@ -33,7 +33,7 @@ export default function HeaderTextArea(props: headerTextAreaInterface) {
       {!editing && placeholder[header] && (
         <p
           style={paragraphStyle}
-          className="tracking-wide whitespace-pre-line bg-transparent border-none rounded-sm outline-none resize-none h-max "
+          className="w-full tracking-wide break-words whitespace-pre-line bg-transparent border-none rounded-sm outline-none resize-none h-max"
         >
           {placeholder[header].trim()}
         </p>

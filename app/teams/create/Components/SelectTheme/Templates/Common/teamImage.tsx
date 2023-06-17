@@ -6,7 +6,7 @@ export default function TeamImage() {
   const { img } = useSelector((state: RootState) => state.teamSlice);
 
   return (
-    <div className="flex items-center justify-center">
+    <div>
       <Image
         src={
           img ||

@@ -1,4 +1,4 @@
-interface colors {
+export interface colors {
   largeHeader: string;
   mediumHeader: string;
   paragraph: string;

@@ -20,7 +20,7 @@ export default function Page() {
   }
 
   return (
-    <div className="flex flex-col justify-center gap-1">
+    <div className="flex flex-col justify-center ">
       <Navbar />
       {step === 1 && (
         <div className="flex flex-col items-center justify-end gap-1 sm:flex-row-reverse sm:flex">
@@ -65,7 +65,7 @@ export default function Page() {
           </form>
           <section className="flex flex-col justify-center gap-2 p-2 sm:m-4 ">
             <h1 className="text-lg font-light text-center">Preview</h1>
-            <TeamCard isEditing={true} viewStyle="card" />
+            <TeamCard />
             <button
               className="px-4 py-2 text-xs font-extrabold text-white bg-green-700 sm:self-end"
               onClick={() => {
