@@ -58,11 +58,11 @@ export default function TeamCard(props: teamCardInterface) {
       className="flex flex-col sm:w-[400px] items-center gap-4 py-2 break-all shadow-sm h-max shadow-neutral-600"
     >
       <div className="flex items-center gap-2 text-sm">
-        <h1 className="font-semibold">{name}: </h1>
+        <h1 className="font-semibold">{name || "Team Name"}: </h1>
         <div> Posted By {createdBy}</div>
       </div>
       <div>
-        <p className="px-1 text-xl hyphens-auto"> {title}</p>
+        <p className="px-1 text-xl hyphens-auto"> {title || "Team Title"}</p>
       </div>
       {props.isEditing && (
         <label

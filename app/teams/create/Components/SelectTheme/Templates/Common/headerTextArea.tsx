@@ -16,9 +16,11 @@ export default function HeaderTextArea(props: headerTextAreaInterface) {
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col w-full gap-4">
-      <h1 style={headerStyle} className="text-xl font-bold tracking-wider ">
-        {header}
-      </h1>
+      {((!editing && placeholder[header]) || editing) && (
+        <h1 style={headerStyle} className="text-xl font-bold tracking-wider ">
+          {header}
+        </h1>
+      )}
       {editing && (
         <textarea
           style={paragraphStyle}
@@ -31,7 +33,7 @@ export default function HeaderTextArea(props: headerTextAreaInterface) {
       {!editing && (
         <p
           style={paragraphStyle}
-          className="bg-transparent border-none min-h-[80px]  outline-none rounded-sm text-[#4626ff] h-max tracking-wide resize-none "
+          className="tracking-wide whitespace-pre-line bg-transparent border-none rounded-sm outline-none resize-none h-max "
         >
           {placeholder[header]}
         </p>

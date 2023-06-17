@@ -13,7 +13,7 @@ export default function ThemeControls(props: { setStep: Function }) {
           onClick={() => dispatch(setEditing(false))}
           className="px-4 py-1 font-bold border-2 border-green-600 hover:cursor-pointer hover:bg-green-600 hover:border-transparent hover:text-white"
         >
-          Create Team
+          Preview
         </button>
       </div>
       <div onClick={() => props.setStep(1)}>

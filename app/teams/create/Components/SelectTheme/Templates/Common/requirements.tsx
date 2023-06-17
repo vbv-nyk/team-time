@@ -44,7 +44,7 @@ export default function Requirements(props: requirementsColors) {
       )}
       {!editing && (
         <p
-          className="bg-transparent border-none min-h-[100px] outline-none rounded-sm w-full resize-none tracking-wide"
+          className="w-full tracking-wide whitespace-pre-line bg-transparent border-none rounded-sm outline-none resize-none"
           style={reqDescStyle}
         >
           {req.desc}
