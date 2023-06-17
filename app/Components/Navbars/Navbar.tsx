@@ -3,30 +3,19 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 
 export default function Navbar() {
-  const { currentThemeColors } = useSelector(
-    (state: RootState) => state.themeSlice
-  );
-
   return (
-    <div
-      style={{ backgroundColor: currentThemeColors.background }}
-      className="flex items-center justify-between py-2 shadow-md"
-    >
+    <div className="flex items-center justify-between px-4 py-2 shadow-md">
       <Link href="/" id="teams">
-        <h1
-          style={{ color: currentThemeColors.largeHeader }}
-          id="Logo"
-          className="font-bold text-md"
-        >
+        <h1 id="Logo" className="text-2xl font-bold">
           Team Time
         </h1>
       </Link>
       <div className="flex items-center gap-2 text-sm">
-        <a style={{ color: currentThemeColors.paragraph }} href="#" id="about">
+        <a href="#" id="about">
           About
         </a>
         <Link href="/teams" id="teams">
-          <div style={{ color: currentThemeColors.paragraph }}>Teams</div>
+          <div>Teams</div>
         </Link>
         <Link href={`/teams/create`}>
           <button className="p-2 font-bold text-white bg-blue-600 border">

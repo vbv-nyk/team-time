@@ -1,16 +1,16 @@
-import { useState } from "react";
-import Avani from "./Templates/Standard/Standard";
-import ElementsPanel from "./ElementsPanel";
 import ThemeControls from "./ThemeControls";
 import { ThemeOption } from "@/app/services/types";
 import { useDispatch, useSelector } from "react-redux";
-import themeSlice, {
-  setCurrentThemeColors,
-  setTheme,
-} from "@/app/redux/themeSlice";
+import { setCurrentThemeColors } from "@/app/redux/themeSlice";
 import { RootState } from "@/app/redux/store";
-import { avaniColors, cleanColors, darkColors } from "@/app/services/colors";
+import {
+  avaniColors,
+  cleanColors,
+  darkColors,
+  vibrantColors,
+} from "@/app/services/colors";
 import StandardTemplate from "./Templates/Standard/Standard";
+import ColorfulNavbar from "@/app/Components/Navbars/ColorfulNavbar.tsx";
 
 export default function SelectTheme() {
   const { editing, currentTheme, currentThemeColors } = useSelector(
@@ -18,7 +18,6 @@ export default function SelectTheme() {
   );
 
   const dispatch = useDispatch();
-
   function ThemeSelect(theme: ThemeOption) {
     switch (theme) {
       case ThemeOption.AVANI:
@@ -30,41 +29,51 @@ export default function SelectTheme() {
       case ThemeOption.CLEAN:
         dispatch(setCurrentThemeColors(cleanColors));
         break;
+      case ThemeOption.VIBRANT:
+        dispatch(setCurrentThemeColors(vibrantColors));
+        break;
+
       default:
         return null;
     }
   }
 
   return (
-    <div className="flex flex-col grid-cols-4 sm:grid">
-      {editing && (
-        <div
-          style={{ backgroundColor: currentThemeColors.background }}
-          className="flex row-span-2 gap-5 py-5 bg-slate-50 md:flex-col"
-        >
-          {Object.values(ThemeOption).map((theme) => (
-            <div
-              key={theme}
-              className="text-center hover:cursor-pointer"
-              onClick={() => ThemeSelect(theme)}
-              style={{ color: currentThemeColors.mediumHeader }}
-            >
-              {theme}
-            </div>
-          ))}
-        </div>
-      )}
+    <div>
+      <ColorfulNavbar />
       <div
-        style={{ gridColumnStart: editing ? "2" : "1", gridColumnEnd: "-1" }}
-        className="flex flex-col "
+        style={{ background: currentThemeColors.background }}
+        className="flex flex-col h-screen grid-cols-4 sm:grid"
       >
-        <div>{<StandardTemplate />}</div>
+        {editing && (
+          <div
+            style={{ backgroundColor: currentThemeColors.background }}
+            className="flex row-span-2 gap-5 py-5 bg-slate-50 md:flex-col"
+          >
+            {Object.values(ThemeOption).map((theme) => (
+              <div
+                key={theme}
+                className="text-center hover:cursor-pointer"
+                onClick={() => ThemeSelect(theme)}
+                style={{ color: currentThemeColors.mediumHeader }}
+              >
+                {theme}
+              </div>
+            ))}
+          </div>
+        )}
         <div
-          style={{ backgroundColor: currentThemeColors.background }}
-          className="flex flex-col items-center col-start-2 col-end-5 gap-4 p-6 bg-white"
+          style={{ gridColumnStart: editing ? "2" : "1", gridColumnEnd: "-1" }}
+          className="flex flex-col "
         >
-          {/* <ElementsPanel /> */}
-          <ThemeControls />
+          <div>{<StandardTemplate />}</div>
+          <div
+            style={{ backgroundColor: currentThemeColors.background }}
+            className="flex flex-col items-center col-start-2 col-end-5 gap-4 p-6 bg-white"
+          >
+            {/* <ElementsPanel /> */}
+            <ThemeControls />
+          </div>
         </div>
       </div>
     </div>

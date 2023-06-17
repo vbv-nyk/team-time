@@ -1,6 +1,6 @@
 "use client";
 import TeamCard from "../Components/Team-Card/TeamCard";
-import Navbar from "../Components/Navbar/Navbar";
+import Navbar from "../Components/Navbars/ColorfulNavbar.tsx";
 import { getTeams } from "../services/queries";
 import { useQuery } from "@apollo/client";
 import { teamInterface, teamsInterface } from "../services/types";

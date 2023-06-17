@@ -1,16 +1,14 @@
 "use client";
-import Navbar from "@/app/Components/Navbar/Navbar";
 import TeamCard from "@/app/Components/Team-Card/TeamCard";
 import { FormEvent, useState } from "react";
 import AddedTags from "./Components/TagComponents/addedTags";
 import TagsComponent from "./Components/TagComponents/tagsComponent";
-import SelectTheme from "./Components/SelectTheme/SelectTheme";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
 import { updateName, updateTitle } from "@/app/redux/teamSlice";
 import { setEditing } from "@/app/redux/themeSlice";
-import { Root } from "postcss";
 import Link from "next/link";
+import Navbar from "@/app/Components/Navbars/Navbar";
 
 export default function Page() {
   const { name, title } = useSelector((state: RootState) => state.teamSlice);
