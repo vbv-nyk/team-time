@@ -1,6 +1,4 @@
-import { RootState } from "@/app/redux/store";
 import Link from "next/link";
-import { useSelector } from "react-redux";
 
 export default function Navbar() {
   return (

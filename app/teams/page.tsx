@@ -1,10 +1,10 @@
 "use client";
-import TeamCard from "../Components/Team-Card/TeamCard";
-import Navbar from "../Components/Navbars/ColorfulNavbar.tsx";
-import { getTeams } from "../services/queries";
 import { useQuery } from "@apollo/client";
-import { teamInterface, teamsInterface } from "../services/types";
 import { useState } from "react";
+import Navbar from "../Components/Navbars/Navbar";
+import TeamCard from "../Components/Team-Card/TeamCard";
+import { getTeams } from "../services/queries";
+import { teamInterface, teamsInterface } from "../services/types";
 
 export default function Page() {
   const {

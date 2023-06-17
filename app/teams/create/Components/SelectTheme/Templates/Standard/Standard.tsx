@@ -1,16 +1,15 @@
-import { sectionTypes } from "@/app/services/types";
+import { RootState } from "@/app/redux/store";
 import {
   updateAchieveReq,
   updateContactReq,
   updateSources,
 } from "@/app/redux/teamSlice";
+import { sectionTypes } from "@/app/services/types";
+import { useSelector } from "react-redux";
+import HeaderTextArea from "../Common/headerTextArea";
 import Requirements from "../Common/requirements";
 import TeamCreatedBy from "../Common/teamCreatedBy";
-import HeaderTextArea from "../Common/headerTextArea";
 import TeamImage from "../Common/teamImage";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, store } from "@/app/redux/store";
-import themeSlice from "@/app/redux/themeSlice";
 
 export default function StandardTemplate() {
   const { currentThemeColors } = useSelector(
