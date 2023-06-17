@@ -9,9 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
 import { updateName, updateTitle } from "@/app/redux/teamSlice";
 import { setEditing } from "@/app/redux/themeSlice";
+import { Root } from "postcss";
+import Link from "next/link";
 
 export default function Page() {
   const { name, title } = useSelector((state: RootState) => state.teamSlice);
+
   const dispatch = useDispatch();
   const [step, setStep] = useState(1);
 
@@ -66,19 +69,19 @@ export default function Page() {
           <section className="flex flex-col justify-center gap-2 p-2 sm:m-4 ">
             <h1 className="text-lg font-light text-center">Preview</h1>
             <TeamCard />
-            <button
-              className="px-4 py-2 text-xs font-extrabold text-white bg-green-700 sm:self-end"
-              onClick={() => {
-                dispatch(setEditing(true));
-                setStep(2);
-              }}
-            >
-              Next
-            </button>
+            <Link href={"/teams/create/poster"}>
+              <button
+                className="px-4 py-2 text-xs font-extrabold text-white bg-green-700 sm:self-end"
+                onClick={() => {
+                  dispatch(setEditing(true));
+                }}
+              >
+                Next
+              </button>
+            </Link>
           </section>
         </div>
       )}
-      {step === 2 && <SelectTheme setStep={setStep} />}
     </div>
   );
 }

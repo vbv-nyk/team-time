@@ -12,14 +12,12 @@ import { RootState } from "@/app/redux/store";
 import { avaniColors, cleanColors, darkColors } from "@/app/services/colors";
 import StandardTemplate from "./Templates/Standard/Standard";
 
-export default function SelectTheme(props: { setStep: Function }) {
+export default function SelectTheme() {
   const { editing, currentTheme, currentThemeColors } = useSelector(
     (state: RootState) => state.themeSlice
   );
 
   const dispatch = useDispatch();
-  const editingStyle = {};
-  const previewStlye = {};
 
   function ThemeSelect(theme: ThemeOption) {
     switch (theme) {
@@ -49,6 +47,7 @@ export default function SelectTheme(props: { setStep: Function }) {
               key={theme}
               className="text-center hover:cursor-pointer"
               onClick={() => ThemeSelect(theme)}
+              style={{ color: currentThemeColors.mediumHeader }}
             >
               {theme}
             </div>
@@ -65,7 +64,7 @@ export default function SelectTheme(props: { setStep: Function }) {
           className="flex flex-col items-center col-start-2 col-end-5 gap-4 p-6 bg-white"
         >
           {/* <ElementsPanel /> */}
-          <ThemeControls setStep={props.setStep} />
+          <ThemeControls />
         </div>
       </div>
     </div>
