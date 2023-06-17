@@ -20,13 +20,8 @@ export default function SelectTheme(props: { setStep: Function }) {
         return <Avani />;
       case ThemeOption.DARK:
         return <Dark />;
-      // Render the component for SIRI theme
-      case ThemeOption.ADHYA:
-        // Render the component for ADHYA theme
-        break;
       case ThemeOption.CLEAN:
         return <Clean />;
-        break;
       default:
         return null;
     }

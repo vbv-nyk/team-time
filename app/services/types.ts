@@ -62,6 +62,4 @@ export enum ThemeOption {
   CLEAN = "CLEAN",
   AVANI = "AVANI",
   DARK = "DARK",
-  SIRI = "SIRI",
-  ADHYA = "ADHYA",
 }

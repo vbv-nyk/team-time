@@ -8,11 +8,12 @@ export default function Requirements(props: requirementsColors) {
   const { reqs } = useSelector((state: RootState) => state.teamSlice);
   const { editing } = useSelector((state: RootState) => state.themeSlice);
   const { reqDescColor, reqNameColor } = props;
+  console.log(reqs);
   function capitaliseReq(reqName: string) {
     return reqName
       .split(" ")
-      .map(
-        (reqSubName) => reqSubName[0].toUpperCase() + reqSubName.substring(1)
+      .map((reqSubName) =>
+        reqSubName.at(0)?.toUpperCase().concat(reqSubName.substring(1))
       )
       .join(" ");
   }
@@ -47,14 +48,14 @@ export default function Requirements(props: requirementsColors) {
           className="w-full tracking-wide whitespace-pre-line bg-transparent border-none rounded-sm outline-none resize-none"
           style={reqDescStyle}
         >
-          {req.desc}
+          {req.desc.trim()}
         </p>
       )}
     </div>
   ));
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1">{reqSection}</div>
+      <div className="flex flex-col gap-2">{reqSection}</div>
     </div>
   );
 }

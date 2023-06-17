@@ -4,21 +4,18 @@ import Link from "next/link";
 import { ChangeEvent, CSSProperties } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store";
+import themeSlice from "@/app/redux/themeSlice";
 
-interface teamCardInterface {
-  viewStyle: string;
-  isEditing: boolean;
-}
-
-export default function TeamCard(props: teamCardInterface) {
+export default function TeamCard() {
   const containerStyle: CSSProperties = {
     display: "flex",
-    flexDirection: props.viewStyle === "list" ? "row" : "column",
-    minWidth: props.isEditing ? "100%" : "100%",
+    flexDirection: "column",
+    minWidth: "100%",
   };
   const { name, img, title, reqs, createdBy } = useSelector(
     (state: RootState) => state.teamSlice
   );
+  const { editing } = useSelector((state: RootState) => state.themeSlice);
 
   const imageRef = useRef<HTMLInputElement>(null);
 
@@ -64,7 +61,7 @@ export default function TeamCard(props: teamCardInterface) {
       <div>
         <p className="px-1 text-xl hyphens-auto"> {title || "Team Title"}</p>
       </div>
-      {props.isEditing && (
+      {editing && (
         <label
           htmlFor="image-picker"
           className="relative self-end px-4 py-2 mb-[-48px] text-xs font-bold text-white bg-blue-600 hover:cursor-pointer"

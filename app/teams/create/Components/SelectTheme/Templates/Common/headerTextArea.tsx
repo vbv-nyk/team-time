@@ -30,12 +30,12 @@ export default function HeaderTextArea(props: headerTextAreaInterface) {
           value={placeholder[header]}
         />
       )}
-      {!editing && (
+      {!editing && placeholder[header] && (
         <p
           style={paragraphStyle}
           className="tracking-wide whitespace-pre-line bg-transparent border-none rounded-sm outline-none resize-none h-max "
         >
-          {placeholder[header]}
+          {placeholder[header].trim()}
         </p>
       )}
     </div>

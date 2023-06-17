@@ -28,10 +28,10 @@ export const counterSlice = createSlice({
       state.name = action.payload;
     },
     updateTitle: (state, action: PayloadAction<string>) => {
-      state.title = action.payload;
+      state.title = action.payload.trim();
     },
     updateDesc: (state, action: PayloadAction<string>) => {
-      state.desc = action.payload;
+      state.desc = action.payload.trim();
     },
     removeReq: (state, action: PayloadAction<number>) => {
       state.reqs = state.reqs.filter((req, i) => i != action.payload);
