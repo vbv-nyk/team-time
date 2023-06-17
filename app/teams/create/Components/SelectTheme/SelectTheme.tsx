@@ -13,7 +13,7 @@ import { avaniColors, cleanColors, darkColors } from "@/app/services/colors";
 import StandardTemplate from "./Templates/Standard/Standard";
 
 export default function SelectTheme(props: { setStep: Function }) {
-  const { editing, currentTheme } = useSelector(
+  const { editing, currentTheme, currentThemeColors } = useSelector(
     (state: RootState) => state.themeSlice
   );
 
@@ -40,7 +40,10 @@ export default function SelectTheme(props: { setStep: Function }) {
   return (
     <div className="flex flex-col grid-cols-4 sm:grid">
       {editing && (
-        <div className="flex row-span-2 gap-5 py-5 rounded-lg bg-slate-50 md:flex-col">
+        <div
+          style={{ backgroundColor: currentThemeColors.background }}
+          className="flex row-span-2 gap-5 py-5 bg-slate-50 md:flex-col"
+        >
           {Object.values(ThemeOption).map((theme) => (
             <div
               key={theme}
@@ -57,7 +60,10 @@ export default function SelectTheme(props: { setStep: Function }) {
         className="flex flex-col "
       >
         <div>{<StandardTemplate />}</div>
-        <div className="flex flex-col items-center col-start-2 col-end-5 gap-4 p-6 bg-white">
+        <div
+          style={{ backgroundColor: currentThemeColors.background }}
+          className="flex flex-col items-center col-start-2 col-end-5 gap-4 p-6 bg-white"
+        >
           {/* <ElementsPanel /> */}
           <ThemeControls setStep={props.setStep} />
         </div>

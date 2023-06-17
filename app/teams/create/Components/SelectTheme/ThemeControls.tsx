@@ -1,7 +1,11 @@
+import { RootState } from "@/app/redux/store";
 import { setEditing } from "@/app/redux/themeSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ThemeControls(props: { setStep: Function }) {
+  const { currentThemeColors } = useSelector(
+    (state: RootState) => state.themeSlice
+  );
   const dispatch = useDispatch();
   return (
     <div className="flex flex-wrap items-center content-around justify-center col-start-1 gap-3 text-xs">
